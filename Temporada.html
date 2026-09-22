@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Temporada</title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+  <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+<!-- Título que verá Google -->
+<meta name="title" content="Temporada">
+<meta name="description" content="Entra a nuestra temporada de nuestra serie mas reciente para ver en tu pantalla desde tu hogar o en cualquier dispositivo.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Temporada">
+  <meta property="og:description" content="Entra a nuestra temporada de nuestra serie mas reciente para ver en tu pantalla desde tu hogar o en cualquier dispositivo.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Temporada">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Temporada">
+  <meta name="twitter:description" content="Entra a nuestra temporada de nuestra serie mas reciente para ver en tu pantalla desde tu hogar o en cualquier dispositivo.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+<body>
+
+  
+
+    <!-- Banner Principal de la Serie -->
+<section class="hero" id="hero-banner">
+    <!-- IMAGEN DE FONDO PROTEGIDA: Reemplaza al background-image previo para evitar distorsión -->
+    <img src="https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000" alt="Fondo Hero" class="hero-bg-img">
+    
+    <div class="hero-overlay"></div>
+    
+    <!-- Envoltura principal para distribuir el texto -->
+    <div class="hero-container-flex">
+        <!-- Bloque de Contenido Informativo Izquierdo -->
+        <div class="hero-content">
+            <div class="tag-trending"><i class="fas fa-tv"></i> SERIE ORIGINAL</div>
+            <h1>Dark Net: Neon City</h1>
+            <p id="series-description">En los callejones digitales de una metrópolis inundada por luces de neón, un grupo de detectives rastrea crímenes virtuales que afectan al mundo real.</p>
+            
+            <!-- Selector de Temporadas Premium (4 Temporadas) -->
+            <div class="season-selector-container">
+                <label for="season-select">Temporada:</label>
+                <select id="season-select">
+                    <option value="1">Temporada 1</option>
+                    <option value="2">Temporada 2</option>
+                    <option value="3">Temporada 3</option>
+                    <option value="4">Temporada 4</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Listado de Episodios (4 columnas con flex-wrap y paginación por flechas) -->
+    <main class="main-container">
+        <div class="section-header">
+            <h2 id="episode-title-dynamic">Episodios disponibles</h2>
+            <div class="slider-controls">
+                <button class="ctrl-btn" id="slide-left-episodes"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+</svg></button>
+                <button class="ctrl-btn" id="slide-right-episodes">    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+</svg></button>
+            </div>
+        </div>
+        
+        <!-- Contenedor con la clase movie-slider que hereda el flex-wrap: wrap -->
+        <div class="movie-slider" id="episode-container">
+            <!-- Los episodios cambiantes se inyectarán aquí con JS -->
+        </div>
+    </main>
+
+<!-- Ventana Modal de Reproductor para Series e Inyección de Formatos -->
+<div class="video-modal-series" id="video-modal-series">
+    <!-- CORREGIDO: Se añadió la ID para que el script capture el clic en el fondo oscuro -->
+    <div class="modal-backdrop-series" id="modal-backdrop-series"></div>
+    
+    <div class="modal-content-series">
+        <!-- EXTRA MANDATORIO: Botón físico para cerrar el reproductor desde móviles o PC -->
+        <button class="close-modal-series" id="close-modal-series" aria-label="Cerrar reproductor">&times;</button>
+        
+        <!-- Envoltura clave para la inyección de formatos hibridos WebM/MP4 -->
+        <div class="video-wrapper-series" id="video-wrapper-container-series" style="position: relative; padding-top: 56.25%; background: #000;">
+            <!-- Dejar vacío. El script inyectará aquí el video con sus respectivos sources -->
+        </div>
+        
+        <div class="modal-info-series">
+            <h3 id="modal-episode-title">Título del Episodio</h3>
+            <p id="modal-episode-desc">Descripción del episodio.</p>
+        </div>
+    </div>
+</div>
+
+
+<style>
+  /* ==========================================
+   1. CONFIGURACIÓN PREMIUM Y VARIABLES
+   ========================================== */
+:root {
+    --bg-dark: #0a0a0c;
+    --primary-color: #ff0055;
+    --primary-gradient: linear-gradient(135deg, #ff0055, #7000ff);
+    --text-main: #ffffff;
+    --text-muted: #a0a0aa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+  zoom:75%;
+}
+
+/* Scrollbar General de la Página */
+::-webkit-scrollbar { 
+    width: 8px; 
+    height: 8px; 
+}
+::-webkit-scrollbar-track { 
+    background: #111; 
+}
+::-webkit-scrollbar-thumb { 
+    background: #333; 
+    border-radius: 4px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--primary-color); 
+}
+/* ==========================================
+   3. BANNER DESTACADO (HERO BANNER CORREGIDO)
+   ========================================== */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Evita desbordamientos de la imagen */
+}
+
+/* NUEVA CLASE: Mantiene la proporción matemática de la imagen sin distorsionar */
+.hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta proporcionalmente la imagen en lugar de aplastarla */
+    object-position: center top;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(75deg, rgba(10,10,12,0.95) 30%, rgba(10,10,12,0.3) 70%, transparent 100%),
+                linear-gradient(to top, var(--bg-dark) 0%, transparent 20%);
+    z-index: 1;
+}
+
+.hero-container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Se posiciona encima de la imagen y de la capa oscura */
+    gap: 50px;
+}
+
+.hero-content { 
+    max-width: 650px; 
+    flex: 1; 
+}
+
+.tag-trending {
+    display: inline-block; 
+    background: rgba(255, 0, 85, 0.2);
+    color: #ff3377; 
+    padding: 5px 12px; 
+    border-radius: 20px;
+    font-size: 12px; 
+    font-weight: bold; 
+    margin-bottom: 15px;
+}
+
+.hero h1 { 
+    font-size: 56px; 
+    font-weight: 800; 
+    margin-bottom: 15px; 
+    line-height: 1.1; 
+}
+
+.hero p { 
+    color: var(--text-muted); 
+    font-size: 16px; 
+    line-height: 1.6; 
+    margin-bottom: 30px; 
+}
+
+.season-selector-container {
+    margin-top: 20px;
+}
+
+#season-select {
+    background: rgba(255,255,255,0.1); 
+    color: white; 
+    border: 1px solid rgba(255,255,255,0.2); 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    outline: none; 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#season-select option {
+    background: #121214;
+}
+
+/* ==========================================
+   ADAPTABILIDAD RESPONSIVA (MEDIA QUERIES)
+   ========================================== */
+@media (max-width: 992px) {
+    .hero {
+        height: auto;
+        padding: 140px 5% 60px 5%; 
+    }
+    .hero-container-flex {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 40px;
+    }
+  }
+/* ==========================================
+   4. FILAS REUTILIZABLES (4 COLUMNAS CON FLEX-WRAP)
+   ========================================== */
+.main-container { 
+    padding: 40px 5%; 
+    margin-top: -50px; 
+    position: relative; 
+    z-index: 3; 
+}
+.section-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px; 
+}
+.section-header h2 { 
+    font-size: 22px; 
+    font-weight: 600; 
+}
+.slider-controls { 
+    display: flex; 
+    gap: 10px; 
+}
+.ctrl-btn {
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white; 
+    width: 35px; 
+    height: 35px; 
+    border-radius: 50%;
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    transition: 0.3s;
+}
+.ctrl-btn:hover { 
+    background: var(--primary-color); 
+    border-color: var(--primary-color); 
+}
+
+.movie-slider {
+    display: flex; 
+    gap: 20px; 
+    padding: 10px 0;
+    width: 100%;
+    flex-wrap: wrap; /* Mantiene la rejilla fija para controlar la paginación */
+}
+
+/* Tarjetas horizontales (Calculadas exactamente a 4 por línea) */
+.movie-card {
+    min-width: calc((100% - 60px) / 4); 
+    width: calc((100% - 60px) / 4);
+    height: 620px; 
+    border-radius: 12px;
+    position: relative; 
+    overflow: hidden; 
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    animation: premiumFadeIn 0.5s ease forwards;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    margin-bottom: 10px;
+}
+.movie-card img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.5s; 
+}
+.card-details {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    padding: 25px 20px;
+    background: linear-gradient(to top, rgba(10,10,12,1) 0%, rgba(10,10,12,0.8) 50%, transparent 100%);
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: all 0.3s ease;
+}
+.movie-card:hover { 
+    transform: translateY(-10px) scale(1.02); 
+}
+.movie-card:hover img { 
+    transform: scale(1.1); 
+}
+.movie-card:hover .card-details { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+  @media (max-width: 992px) {
+    .movie-card {
+        min-width: calc((100% - 40px) / 3);
+        width: calc((100% - 40px) / 3);
+        height: 500px; /* Reducimos ligeramente la altura para mantener proporción */
+    }
+}
+
+/* Celulares medianos/grandes (Muestra 2 columnas por fila) */
+@media (max-width: 768px) {
+    .movie-card {
+        min-width: calc((100% - 20px) / 2);
+        width: calc((100% - 20px) / 2);
+        height: 460px; /* Altura ideal tipo banner horizontal en celulares */
+    }
+    
+    /* En móviles, hacemos que los detalles sean visibles por defecto o tengan padding menor */
+    .card-details {
+        padding: 15px 12px;
+        opacity: 1; /* Hace los títulos visibles en móviles ya que no hay mouse/hover */
+        transform: translateY(0);
+    }
+}
+
+/* Celulares muy pequeños (Muestra 1 tarjeta completa por fila) */
+@media (max-width: 480px) {
+    .movie-card {
+        min-width: 100%;
+        width: 100%;
+        height: 680px;
+    }
+}
+.card-details h4 { 
+    font-size: 18px; 
+    margin-bottom: 5px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+.card-meta { 
+    font-size: 12px; 
+    color: var(--primary-color); 
+    font-weight: bold; 
+}
+
+/* ==========================================
+   5. REPRODUCTOR DE VIDEO CINEMA (MODAL)
+   ========================================== */
+.video-modal-series {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* CORREGIDO: Cambiado de 100px a 100vh para abarcar toda la pantalla */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Control de estados por defecto (Oculto) */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Estado Activo disparado por JavaScript */
+.video-modal-series.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Fondo oscuro translúcido con desenfoque de película */
+.modal-backdrop-series {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 8, 0.93);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1;
+}
+
+/* Tarjeta contenedora del reproductor y la información */
+.modal-content-series {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    background: #121216;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    /* Efecto de escala al abrir */
+    transform: scale(0.85);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Animación de agrandamiento cuando el modal se activa */
+.video-modal-series.active .modal-content-series {
+    transform: scale(1);
+}
+
+/* Botón de cierre superior derecho estilo Netflix */
+.close-modal-series {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.3s, transform 0.2s, border-color 0.3s;
+}
+
+.close-modal-series:hover {
+    background: var(--primary-gradient, linear-gradient(135deg, #7000ff, #ff007f));
+    border-color: transparent;
+    transform: scale(1.05);
+}
+
+/* --- ENVOLTURA INTERMEDIA CONTRA DISTORSIÓN (16:9) --- */
+.video-wrapper-series {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Mantiene proporción perfecta 16:9 widescreen */
+    background: #000000;
+}
+
+/* Fuerza al video a posicionarse dentro del espacio exacto sin estirarse */
+.video-wrapper-series video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Evita que el video se deforme o pixele */
+    background-color: #000000;
+    outline: none;
+}
+
+
+#modal-episode-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+#modal-episode-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted, #a0a0aa);
+    font-weight: 400;
+}
+
+/* Control Responsivo para pantallas pequeñas */
+@media (max-width: 576px) {
+    .modal-content-series {
+        width: 95%;
+        border-radius: 12px;
+    }
+    .modal-info-series {
+        padding: 15px;
+    }
+    #modal-episode-title {
+        font-size: 18px;
+    }
+    #modal-episode-desc {
+        font-size: 13px;
+    }
+    .close-modal-series {
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+}
+
+/* Animaciones globales requeridas por las tarjetas */
+@keyframes premiumFadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+  </style>
+  <script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+    <script>
+  /* ==========================================================================
+   1. BASE DE DATOS DE LA SERIE (EPISODIOS POR TEMPORADA)
+   ========================================================================== */
+const seriesData = {
+    1: [
+        { id: "s1e1", title: "Capítulo 1: Piloto Virtual", desc: "Un hacker descubre una anomalía en la red que altera su realidad.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" },
+        { id: "s1e2", title: "Capítulo 2: Luces de Neón", desc: "La persecución comienza en los sectores bajos de la megalópolis.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" },
+        { id: "s1e3", title: "Capítulo 3: Código Espejo", desc: "El equipo descifra un algoritmo encriptado de alta prioridad.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" },
+        { id: "s1e4", title: "Capítulo 4: Desconexión", desc: "Una emboscada digital obliga al grupo a tomar medidas extremas.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" },
+        { id: "s1e5", title: "Capítulo 5: Conexión", desc: "Una emboscada digital obliga al grupo a tomar medidas extremas.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" }
+    ],
+    2: [
+        { id: "s2e1", title: "Capítulo 1: El Regreso", desc: "Nuevas amenazas surgen tras la caída de los servidores centrales.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" },
+        { id: "s2e2", title: "Capítulo 2: Red de Mentiras", desc: "Las corporaciones manipulan la información pública de la red.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" }
+    ],
+    3: [
+        { id: "s3e1", title: "Capítulo 1: Sobrecarga", desc: "Un fallo masivo de energía expone los secretos del núcleo central.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" },
+        { id: "s3e2", title: "Capítulo 2: Protocolo Fantasma", desc: "El equipo opera desde la clandestinidad absoluta para sobrevivir.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" }
+    ],
+    4: [
+        { id: "s4e1", title: "Capítulo 1: El Amanecer de Cristal", desc: "La temporada final arranca con un cambio radical en el gobierno digital.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" },
+        { id: "s4e2", title: "Capítulo 2: Líneas de Sangre", desc: "El enfrentamiento definitivo entre los hackers y la corporación de IA.", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", video: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm" }
+    ]
+};
+
+let currentSeason = 1;
+let currentPage = 0;
+const episodesPerPage = 4;
+
+/* ==========================================================================
+   2. INICIALIZACIÓN PRINCIPAL (DOMContentLoaded)
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    showEpisodes(1, 0); // Muestra temporada 1, bloque 0 inicialmente
+    setupSeasonSelector();
+    setupPaginationControls();
+    setupModalControls();
+    setupMobileMenu();
+});
+
+/* ==========================================================================
+   3. RENDERIZADO Y CONTROL DE CAPÍTULOS
+   ========================================================================== */
+function showEpisodes(season, pageIndex) {
+    currentSeason = season;
+    currentPage = pageIndex;
+    
+    const startIndex = currentPage * episodesPerPage;
+    const endIndex = startIndex + episodesPerPage;
+    
+    const episodesList = seriesData[currentSeason] || [];
+    const pageEpisodes = episodesList.slice(startIndex, endIndex);
+    
+    const container = document.getElementById("episode-container");
+    if (!container) return;
+    container.innerHTML = "";
+
+    if (pageEpisodes.length === 0) {
+        container.innerHTML = "<p style='padding: 20px; color: #a0a0aa; text-align: center; width: 100%;'>No hay episodios disponibles para esta página.</p>";
+        return;
+    }
+
+    pageEpisodes.forEach(ep => {
+        const card = document.createElement("div");
+        card.classList.add("movie-card");
+        card.innerHTML = `
+            <img src="${ep.thumb}" alt="${ep.title}">
+            <div class="card-details">
+                <h4>${ep.title}</h4>
+                <div class="card-meta">Reproducir Capítulo</div>
+            </div>
+        `;
+        
+        // Al hacer clic en un capítulo, abre el reproductor de video directamente
+        card.addEventListener("click", () => {
+            openEpisodePlayer(ep);
+        });
+
+        container.appendChild(card);
+    });
+}
+
+function setupSeasonSelector() {
+    const selector = document.getElementById("season-select");
+    if (selector) {
+        selector.addEventListener("change", (e) => {
+            const selected = parseInt(e.target.value);
+            showEpisodes(selected, 0); // Reinicia al primer bloque de la nueva temporada
+        });
+    }
+}
+
+function setupPaginationControls() {
+    const btnRight = document.getElementById("slide-right-episodes");
+    const btnLeft = document.getElementById("slide-left-episodes");
+
+    if (btnRight) {
+        btnRight.addEventListener("click", () => {
+            if ((currentPage + 1) * episodesPerPage < seriesData[currentSeason].length) {
+                showEpisodes(currentSeason, currentPage + 1);
+            }
+        });
+    }
+    if (btnLeft) {
+        btnLeft.addEventListener("click", () => {
+            if (currentPage > 0) {
+                showEpisodes(currentSeason, currentPage - 1);
+            }
+        });
+    }
+}/* ==========================================================================
+   4. CONTROLADORES DEL REPRODUCTOR (MODAL DE EPISODIOS)
+   ========================================================================== */
+function openEpisodePlayer(episode) {
+    const modal = document.getElementById("video-modal-series");
+    const wrapper = document.querySelector(".video-wrapper-series") || document.getElementById("video-wrapper-container-series") || document.querySelector(".video-wrapper");
+    
+    if (!modal || !wrapper) return;
+
+    // Inyectar los textos del episodio seleccionado en el modal
+    document.getElementById("modal-episode-title").innerText = episode.title;
+    document.getElementById("modal-episode-desc").innerText = episode.desc;
+    
+    // REESTRUCTURACIÓN DE SOPORTE HÍBRIDO: Inyectamos etiquetas source limpias
+    wrapper.innerHTML = `
+        <video id="video-player-series" controls autoplay poster="${episode.thumb}" style="width: 100%; height: 100%; object-fit: contain;">
+            <source src="${episode.video}" type="video/webm">
+            <source src="${episode.video}" type="video/mp4">
+            Tu navegador no soporta la reproducción de video HTML5.
+        </video>
+    `;
+    
+    // Abrimos el modal añadiendo la clase activa de tu CSS
+    modal.classList.add("active");
+    
+    // Forzamos la carga y ejecución asíncrona segura del nuevo nodo de video
+    const nuevoVideoNode = document.getElementById("video-player-series");
+    if (nuevoVideoNode) {
+        nuevoVideoNode.load();
+        nuevoVideoNode.play().catch(err => {
+            console.log("La reproducción automática requiere interacción o permisos de usuario:", err);
+        });
+    }
+}
+
+function setupModalControls() {
+    const modal = document.getElementById("video-modal-series");
+    const wrapper = document.querySelector(".video-wrapper-series") || document.getElementById("video-wrapper-container-series") || document.querySelector(".video-wrapper");
+    const closeBtn = document.getElementById("close-modal-series");
+    const backdrop = document.querySelector(".modal-backdrop") || document.getElementById("modal-backdrop-series");
+
+    const closeModal = () => {
+        if (modal) {
+            // Removemos la clase 'active' para que oculte con tus reglas CSS
+            modal.classList.remove("active");
+        }
+        
+        // CORREGIDO: Buscamos de forma dinámica el video activo para pausarlo y destruirlo
+        const videoActivo = document.getElementById("video-player-series");
+        if (videoActivo) {
+            videoActivo.pause();
+            videoActivo.src = "";
+        }
+        if (wrapper) {
+            wrapper.innerHTML = ""; // Limpia por completo el HTML reduciendo consumo en memoria
+        }
+    };
+
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (backdrop) backdrop.addEventListener("click", closeModal);
+
+    // Cierre seguro adicional usando la tecla física Escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+    });
+}
+
+/* ==========================================================================
+   5. INTERFAZ MÓVIL
+   ========================================================================== */
+function setupMobileMenu() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            const icon = menuToggle.querySelector("i");
+            if (icon) {
+                icon.className = navLinks.classList.contains("active") ? "fas fa-times" : "fas fa-bars";
+            }
+        });
+    }
+}
+
+
+    </script>
+</body>
+</html>

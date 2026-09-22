@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Estrenos | Peliculas y series</title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+  <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+<!-- Título que verá Google -->
+<meta name="title" content="Estrenos | Peliculas y series">
+<meta name="description" content="Entra a nuestros estrenos mas recientes de nuestros trailers de cada año en tu pantalla principal.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Estrenos | Peliculas y series">
+  <meta property="og:description" content="Entra a nuestros estrenos mas recientes de nuestros trailers de cada año en tu pantalla principal.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Estrenos">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Estrenos | Peliculas y series">
+  <meta name="twitter:description" content="Entra a nuestros estrenos mas recientes de nuestros trailers de cada año en tu pantalla principal.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+  <body>
+
+    <!-- Menú de Navegación -->
+
+
+    <!-- Sección Hero Premium -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-tag"><i class="fa-solid fa-bolt"></i> Cobertura Exclusiva</div>
+            <h1>Los trailers de cada año</h1>
+            <p>Nuevos lanzamientos de peliculas y series de cada año. Descubre las tendencias globales de cine y streaming antes que nadie.</p>
+            <div class="hero-buttons">
+                <a href="#estrenos" class="btn btn-primary"><i class="fa-solid fa-arrow-trend-up"></i> Explorar Estrenos</a>
+                <a href="mailto:contacto@gieovannyfrias.com" class="btn btn-secondary"><i class="fa-solid fa-envelope"></i> Contactar Agente</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal de Estrenos -->
+    <main class="seccion-estrenos" id="estrenos">
+        
+        <div class="wrapper-filtros">
+            <div class="titulo-seccion">
+                <h2>Lanzamientos de la Temporada</h2>
+                <p>Curaduría en tiempo real para agencias informativas.</p>
+            </div>
+            
+            <div class="controles">
+                <!-- Buscador Dinámico -->
+                <div class="buscador-caja">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="buscador" placeholder="Buscar título o género...">
+                </div>
+
+                <!-- Botones de Filtro -->
+                <div class="botones-filtro">
+                    <button class="btn-filtro active" data-filter="all">Todos</button>
+                    <button class="btn-filtro" data-filter="movie">Películas</button>
+                    <button class="btn-filtro" data-filter="series">Series</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Dinámico de Tarjetas -->
+        <div class="grid-estrenos" id="gridEstrenos">
+            <!-- Los elementos se renderizan mediante JavaScript de forma dinámica -->
+        </div>
+    </main>
+
+    <!-- Modal para Trailers de Video -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content-wrapper">
+            <button class="cerrar-modal" id="btnCerrarModal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-contenido">
+                <iframe id="modalVideoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        :root {
+            --bg-principal: #09090b;
+            --bg-tarjeta: #14141b;
+            --bg-nav: rgba(9, 9, 11, 0.75);
+            --primario: #e50914;
+            --primario-hover: #b80710;
+            --dorado: #ffb703;
+            --texto-blanco: #ffffff;
+            --texto-mutado: #a1a1aa;
+            --borde: rgba(255, 255, 255, 0.08);
+            --fuente: 'Outfit', sans-serif;
+            --sombra: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            overflow-x: hidden;
+          zoom:75%;
+        }
+
+        /* --- HERO HEADER --- */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 0 4%;
+            background: linear-gradient(to right, rgba(9,9,11,0.95) 30%, rgba(9,9,11,0.4) 70%), url('file:///C:/Users/Gieovanny/Downloads/photo-1536440136628-849c177e76a1.jpg') center/cover no-repeat;
+            margin-bottom: 4rem;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-tag i {
+            color: var(--dorado);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            color: var(--texto-mutado);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+              flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primario);
+            color: var(--texto-blanco);
+            box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primario-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--texto-blanco);
+            border: 1px solid var(--borde);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* --- CONTROLADORES DE CONTENIDO --- */
+        .seccion-estrenos {
+            padding: 0 4% 6rem 4%;
+        }
+
+        .wrapper-filtros {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--borde);
+            padding-bottom: 1.5rem;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .titulo-seccion p {
+            color: var(--texto-mutado);
+            margin-top: 0.25rem;
+        }
+
+        .controles {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .buscador-caja {
+            position: relative;
+        }
+
+        .buscador-caja input {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
+            border-radius: 8px;
+            color: var(--texto-blanco);
+            font-size: 0.95rem;
+            width: 260px;
+            transition: all 0.3s;
+        }
+
+        .buscador-caja input:focus {
+            outline: none;
+            border-color: var(--primario);
+            box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+        }
+
+        .buscador-caja i {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--texto-mutado);
+        }
+
+        .botones-filtro {
+            display: flex;
+            background: var(--bg-tarjeta);
+            padding: 0.35rem;
+            border-radius: 8px;
+            border: 1px solid var(--borde);
+              flex-wrap: wrap;
+        }
+
+        .btn-filtro {
+            background: transparent;
+            border: none;
+            color: var(--texto-mutado);
+            padding: 0.5rem 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-filtro.active, .btn-filtro:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--texto-blanco);
+        }
+
+        .btn-filtro.active {
+            background: var(--primario);
+            color: var(--texto-blanco);
+        }
+
+        /* --- CUADRÍCULA DE TARJETAS (GRID) --- */
+        .grid-estrenos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .tarjeta {
+            background: var(--bg-tarjeta);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--borde);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--sombra);
+        }
+
+        .media-contenedor {
+            position: relative;
+            width: 100%;
+            padding-top: 140%; /* Aspect Ratio Elegante */
+            overflow: hidden;
+        }
+
+        .media-contenedor img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .tarjeta:hover .media-contenedor img {
+            transform: scale(1.05);
+        }
+
+        .badge-tipo {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--borde);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .badge-calificacion {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 183, 3, 0.95);
+            color: #000;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            z-index: 2;
+        }
+
+        .tarjeta-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .tarjeta-genero {
+            font-size: 0.8rem;
+            color: var(--primario);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .tarjeta-titulo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+            color: var(--texto-blanco);
+        }
+
+        .tarjeta-detalles {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--borde);
+            font-size: 0.85rem;
+            color: var(--texto-mutado);
+        }
+
+        .btn-play-card {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--texto-blanco);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tarjeta:hover .btn-play-card {
+            background: var(--primario);
+            transform: scale(1.1);
+        }
+
+        /* --- MODAL PARA PLAYERS --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+      .modal-content-wrapper{
+        position: relative;
+    height: 400px;
+    width: 100%;
+    display: contents;
+      }
+        .modal-contenido {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            border: 1px solid var(--borde);
+        }
+
+        .modal-contenido iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: -2.5rem;
+            right: 0;
+            color: var(--texto-blanco);
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s;
+        }
+
+        .cerrar-modal:hover {
+            color: var(--primario);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+            .navbar { padding: 1rem 4%; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { min-height: 70vh; }
+            .hero h1 { font-size: 2.3rem; }
+            .wrapper-filtros { flex-direction: column; align-items: flex-start; }
+            .controles { width: 100%; justify-content: space-between; }
+            .buscador-caja { width: 100%; }
+            .buscador-caja input { width: 100%; }
+        }
+      
+    </style>
+<script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+    <script>
+        const catálogoEstrenos = [
+            {
+                id: 1,
+                titulo: "Titulo - No disponible",
+                tipo: "movie",
+                genero: "Ciencia Ficción",
+                calificacion: "8.9",
+                fecha: "Oct 2026",
+                imagen: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000",
+                trailer: "https://www.youtube.com/embed/DRZP5iWrPKM" // Enlace demo embebido
+            },
+            {
+                id: 2,
+                titulo: "Titulo - No disponible",
+                tipo: "series",
+                genero: "Drama / Suspenso",
+                calificacion: "9.2",
+                fecha: "Temp 3 - Nov 2026",
+                imagen: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000",
+                trailer: "https://www.youtube.com/embed/DRZP5iWrPKM"
+            },
+            {
+                id: 3,
+                titulo: "Titulo - No disponible",
+                tipo: "movie",
+                genero: "Acción / Cyberpunk",
+                calificacion: "7.8",
+                fecha: "Dic 2026",
+                imagen: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000",
+                trailer: "https://www.youtube.com/embed/DRZP5iWrPKM"
+            },
+            {
+                id: 4,
+                titulo: "Titulo - No disponible",
+                tipo: "series",
+                genero: "Aventura Documental",
+                calificacion: "8.5",
+                fecha: "Estreno Inmediato",
+                imagen: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000",
+                trailer: "https://www.youtube.com/embed/DRZP5iWrPKM"
+            },
+            {
+                id: 5,
+                titulo: "Titulo - No disponible",
+                tipo: "movie",
+                genero: "Terror Psicológico",
+                calificacion: "8.0",
+                fecha: "Ene 2027",
+                imagen: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000",
+                trailer: "https://www.youtube.com/embed/DRZP5iWrPKM"
+            },
+            {
+                id: 6,
+                titulo: "Titulo - No disponible",
+                tipo: "series",
+                genero: "Crimen Organizado",
+                calificacion: "9.0",
+                fecha: "Temp 1 - Feb 2027",
+                imagen: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000",
+                trailer: "https://www.youtube.com/embed/DRZP5iWrPKM"
+            }
+        ];
+
+        // Elementos del DOM
+        const gridEstrenos = document.getElementById('gridEstrenos');
+        const buscador = document.getElementById('buscador');
+        const botonesFiltro = document.querySelectorAll('.btn-filtro');
+        const navbar = document.getElementById('navbar');
+        const videoModal = document.getElementById('videoModal');
+        const modalVideoFrame = document.getElementById('modalVideoFrame');
+        const btnCerrarModal = document.getElementById('btnCerrarModal');
+
+        // Estado de la Aplicación Filtros
+        let filtroActivo = 'all';
+        let textoBusqueda = '';
+
+        // Función para renderizar tarjetas en el Grid
+        function renderizarContenido() {
+            gridEstrenos.innerHTML = '';
+            
+            const elementosFiltrados = catálogoEstrenos.filter(item => {
+                const coincideTipo = (filtroActivo === 'all' || item.tipo === filtroActivo);
+                const coincideTexto = item.titulo.toLowerCase().includes(textoBusqueda.toLowerCase()) || 
+                                      item.genero.toLowerCase().includes(textoBusqueda.toLowerCase());
+                return coincideTipo && coincideTexto;
+            });
+
+            if (elementosFiltrados.length === 0) {
+                gridEstrenos.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--texto-mutado); padding: 3rem 0;">No se encontraron resultados que coincidan con los criterios.</div>`;
+                return;
+            }
+
+            elementosFiltrados.forEach(item => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'tarjeta';
+                tarjeta.innerHTML = `
+                    <div class="media-contenedor">
+                        <span class="badge-tipo">${item.tipo === 'movie' ? 'Película' : 'Serie'}</span>
+                        <span class="badge-calificacion"><i class="fa-solid fa-star"></i> ${item.calificacion}</span>
+                        <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
+                    </div>
+                    <div class="tarjeta-info">
+                        <span class="tarjeta-genero">${item.genero}</span>
+                        <h3 class="tarjeta-titulo">${item.titulo}</h3>
+                        <div class="tarjeta-detalles">
+                            <span><i class="fa-regular fa-calendar"></i> ${item.fecha}</span>
+                            <div class="btn-play-card" onclick="abrirTrailer('${item.trailer}')">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gridEstrenos.appendChild(tarjeta);
+            });
+        }
+
+        // Eventos para Botones de Filtro (Tabs)
+        botonesFiltro.forEach(boton => {
+            boton.addEventListener('click', () => {
+                botonesFiltro.forEach(b => b.classList.remove('active'));
+                boton.classList.add('active');
+                filtroActivo = boton.getAttribute('data-filter');
+                renderizarContenido();
+            });
+        });
+
+        // Evento para Buscador en Tiempo Real
+        buscador.addEventListener('input', (e) => {
+            textoBusqueda = e.target.value;
+            renderizarContenido();
+        });
+
+        // Efecto visual Navbar al hacer scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Funciones del Modal de Video Premium
+        function abrirTrailer(url) {
+            modalVideoFrame.src = url;
+            videoModal.classList.add('active');
+          
+        }
+
+        function cerrarModal() {
+            videoModal.classList.remove('active');
+            modalVideoFrame.src = '';
+        }
+
+        btnCerrarModal.addEventListener('click', cerrarModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) cerrarModal();
+        });
+
+        // Carga Inicial de la Aplicación
+        document.addEventListener('DOMContentLoaded', renderizarContenido);
+    </script>
+</body>
+</html>

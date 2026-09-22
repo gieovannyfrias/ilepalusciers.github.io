@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>404 no encontrado </title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+    <!-- Iconos Premium FontAwesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+<!-- Título que verá Google -->
+<meta name="title" content="404 no encontrado">
+<meta name="description" content="La pagina no fue encontrado o roto el enlace de nuestro sitio web oficial temporalmente hasta nuevo aviso.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="404 no encontrado">
+  <meta property="og:description" content="La pagina no fue encontrado o roto el enlace de nuestro sitio web oficial temporalmente hasta nuevo aviso.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/404">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="404 no encontrado">
+  <meta name="twitter:description" content="La pagina no fue encontrado o roto el enlace de nuestro sitio web oficial temporalmente hasta nuevo aviso.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+<body>
+<div class="section">
+    <div class="error-container">
+        <!-- Código de Error -->
+        <div class="error-code">404</div>
+        
+        <!-- Mensajes -->
+        <h1 class="error-title">Señal Perdida en el Espacio</h1>
+        <p class="error-desc">El título, serie o página que estás intentando sintonizar no se encuentra disponible o ha cambiado de coordenadas en nuestra galaxia de streaming.</p>
+        
+        <!-- Botón de regreso directo por HTML -->
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver a la Cartelera
+        </a>
+    </div>
+  </div>
+  
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --primary-gradient: linear-gradient(45deg, #7000ff, #ff007f);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+          zoom:75%;
+        }
+      .section{
+          height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+      }
+        /* Efecto de fondo estático/glitch de televisión antigua */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, var(--bg-dark) 80%),
+                        rgba(255, 255, 255, 0.02);
+            opacity: 0.6;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 500px;
+            padding: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .error-code {
+            font-size: 130px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 10px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .error-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .error-desc {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(112, 0, 255, 0.5), 0 0 10px rgba(255, 0, 127, 0.2);
+        }
+
+        .btn-back i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-back:hover i {
+            transform: translateX(-4px);
+        }
+
+        /* Animación sutil de pulso para el código 404 */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(112, 0, 255, 0.2)); }
+            50% { transform: scale(1.02); filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.4)); }
+        }
+
+        /* Adaptación móvil */
+        @media (max-width: 576px) {
+            .error-code { font-size: 100px; }
+            .error-title { font-size: 20px; }
+            .error-desc { font-size: 14px; }
+        }
+    </style>
+<script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+</body>
+</html>

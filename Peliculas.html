@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Peliculas </title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+    <!-- Iconos Premium FontAwesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+<!-- Título que verá Google -->
+<meta name="title" content="Peliculas">
+<meta name="description" content="Entra a nuestras peliculas para ver cualquier catalogo correspondiente donde lo podras ver con tus compañeros,amigos y familiares en tu pantalla principal.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Series">
+  <meta property="og:description" content="Entra a nuestras peliculas para ver cualquier catalogo correspondiente donde lo podras ver con tus compañeros,amigos y familiares en tu pantalla principal.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Peliculas">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Peliculas">
+  <meta name="twitter:description" content="Entra a nuestras peliculas para ver cualquier catalogo correspondiente donde lo podras ver con tus compañeros,amigos y familiares en tu pantalla principal.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+<body>
+
+    <main class="main-container">
+        <!-- Barra de Categorías / Géneros -->
+        <div class="category-bar">
+            <button class="cat-btn active" data-genre="todos">Todos</button>
+            <button class="cat-btn" data-genre="Acción">Acción</button>
+            <button class="cat-btn" data-genre="Sci-Fi">Sci-Fi</button>
+            <button class="cat-btn" data-genre="Suspenso">Suspenso</button>
+            <button class="cat-btn" data-genre="Terror">Terror</button>
+        </div>
+
+        <!-- Encabezado con Título y Flechas de Paginación -->
+        <div class="section-header">
+            <h2 id="section-title-dynamic">Títulos Recomendados</h2>
+            <div class="slider-controls">
+                <button class="ctrl-btn" id="slide-left" aria-label="Anterior"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+</svg></button>
+                <button class="ctrl-btn" id="slide-right" aria-label="Siguiente"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+</svg></button>
+            </div>
+        </div>
+
+        <!-- Contenedor de Tarjetas Dinámicas -->
+        <div class="movie-slider" id="movie-container"></div>
+    </main>
+
+  <!-- Modal Cinema para Videos -->
+<div id="video-modal" class="video-modal">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+        <button id="close-modal" class="close-modal" aria-label="Cerrar reproductor">&times;</button>
+        <div class="video-player-container">
+            <video id="main-video" controls autoplay playsinline></video>
+        </div>
+        <div class="modal-details">
+            <h2 id="modal-video-title"></h2>
+            <p id="modal-video-genre"></p>
+        </div>
+    </div>
+</div>
+
+<style>
+  :root {
+    --bg-dark: #0a0a0c;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --primary-gradient: linear-gradient(45deg, #7000ff, #ff007f);
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; zoom:75%;}
+.main-container { padding: 40px 5%; width: 100%;padding-top: 200px; }
+
+/* Filtros por Categoría */
+.category-bar { display: flex; gap: 15px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none;    flex-wrap: wrap; }
+.category-bar::-webkit-scrollbar { display: none; }
+.cat-btn {
+    background: rgba(255, 255, 255, 0.05); color: var(--text-main); border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 25px; border-radius: 20px; font-weight: 600; cursor: pointer; white-space: nowrap;
+    transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+.cat-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+.cat-btn.active { background: var(--primary-gradient); color: white; border: none; box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3); }
+
+/* Encabezados y Controles */
+.section-header {  
+  display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 25px;
+  }
+.section-header h2 { font-size: 24px; font-weight: 700; }
+.slider-controls { display: flex; gap: 10px; }
+.ctrl-btn {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-main);
+    width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    cursor: pointer; transition: background 0.3s, border-color 0.3s;
+}
+.ctrl-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.2); }
+
+/* Grilla de Tarjetas */
+/* --- CONTENEDOR SLIDER (MODIFICADO A 5 FILAS AUTOMÁTICAS) --- */
+.movie-slider { 
+    display: grid;
+    /* CAMBIO CLAVE: Definimos exactamente 5 filas automáticas */
+    grid-template-rows: repeat(5, auto);
+    /* Fuerza a que el flujo de tarjetas llene las celdas de arriba a abajo primero */
+    grid-auto-flow: column;
+    /* Divide la pantalla de forma perfecta en 5 columnas por bloque visual */
+    grid-auto-columns: calc((100% - 80px) / 5); 
+    gap: 20px; 
+    width: 100%; 
+    overflow-x: auto; 
+    scroll-behavior: smooth;
+    padding: 10px 0 25px 0;
+    scrollbar-width: none; /* Oculta barra en Firefox */
+}
+.movie-slider::-webkit-scrollbar { 
+    display: none; /* Oculta barra en Chrome/Safari */
+}
+
+.movie-card {
+    /* Eliminamos flex y max-width previos para que CSS Grid controle el tamaño exacto */
+    width: 100%;
+    background: rgba(20, 20, 25, 0.6); 
+    border-radius: 12px; 
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.03); 
+    position: relative;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+}
+.movie-card:hover { 
+    transform: translateY(-8px) scale(1.02); 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5); 
+    z-index: 10;
+}
+
+/* Efecto de Reproducción Overlay al pasar el cursor */
+.img-container { position: relative; width: 100%; height: 460px; overflow: hidden; cursor: pointer; }
+.img-container img { width: 100%; height: 100%; object-fit: cover; }
+.play-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.3s ease;
+}
+.play-overlay i { color: #fff; font-size: 40px; transform: scale(0.8); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.movie-card:hover .play-overlay { opacity: 1; }
+.movie-card:hover .play-overlay i { transform: scale(1); }
+
+.card-details { padding: 15px; }
+.card-details h4 { font-size: 16px; font-weight: 600; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-meta { font-size: 13px; color: var(--text-muted); }
+
+/* MODAL DEL REPRODUCTOR */
+.video-modal {
+  position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            z-index: 200;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+}
+.video-modal.active { opacity: 1; pointer-events: auto; }
+.modal-backdrop { position: absolute; width: 100%; height: 100%; background: rgba(5, 5, 8, 0.95); backdrop-filter: blur(8px); }
+.modal-content {
+    position: relative; width: 90%; max-width: 900px; background: #121216;
+    border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); z-index: 2;
+}
+.video-player-container { position: relative; width: 100%; padding-top: 56.25%; /* Relación de aspecto 16:9 */ background: #000; }
+.video-player-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.close-modal {
+    position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); border: none;
+    color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center;
+    align-items: center; cursor: pointer; z-index: 10; transition: background 0.3s;
+}
+.close-modal:hover { background: var(--primary-gradient); }
+.modal-details { padding: 25px; }
+.modal-details h3 { font-size: 22px; margin-bottom: 5px; }
+.modal-details p { color: var(--text-muted); font-size: 14px; }
+
+/* Responsive */
+@media (max-width: 992px) { .movie-card { min-width: calc((100% - 40px) / 3); max-width: calc((100% - 40px) / 3); } }
+@media (max-width: 768px) { .movie-card { min-width: calc((100% - 20px) / 2); max-width: calc((100% - 20px) / 2); } }
+@media (max-width: 576px) { .movie-card { min-width: 100%; max-width: 100%; } }
+@media (max-width: 992px) { 
+    /* Muestra 3 columnas por fila en tablets */
+    .movie-slider { grid-auto-columns: calc((100% - 40px) / 3); } 
+}
+@media (max-width: 768px) { 
+    /* Muestra 2 columnas por fila en móviles medianos */
+    .movie-slider { grid-auto-columns: calc((100% - 20px) / 2); } 
+}
+@media (max-width: 576px) { 
+    /* Muestra 1 columna completa por fila en móviles pequeños */
+    .movie-slider { grid-auto-columns: 100%; } 
+}
+  @media (max-width: 1200px) { .movie-slider { grid-auto-columns: calc((100% - 60px) / 4); } }
+@media (max-width: 992px) { .movie-slider { grid-auto-columns: calc((100% - 40px) / 3); } }
+@media (max-width: 768px) { .movie-slider { grid-auto-columns: calc((100% - 20px) / 2); } }
+@media (max-width: 480px) { .movie-slider { grid-auto-columns: 100%; } }
+  </style>
+  <script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+  <script>
+/* ==========================================================================
+   1. BASES DE DATOS DEL CATÁLOGO (RUTAS LOCALES OPTIMIZADAS)
+   ========================================================================== */
+const contentDatabase = [
+    { id: 1, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 14m", category: "Sci-Fi" },
+    { id: 2, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 1h 58m", category: "Suspenso" },
+    { id: 3, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 42m", category: "Acción" },
+    { id: 4, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 35m", category: "Terror" },
+    { id: 5, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 2h 05m", category: "Acción" },
+    { id: 6, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 1h 50m", category: "Sci-Fi" },
+    { id: 7, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 52m", category: "Terror" },
+    { id: 8, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 1h 55m", category: "Suspenso" },
+    { id: 9, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 01m", category: "Sci-Fi" },
+    { id: 10, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 1h 47m", category: "Suspenso" },
+    { id: 11, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 53m", category: "Acción" },
+    { id: 12, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 40m", category: "Terror" },
+    { id: 13, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 2h 12m", category: "Acción" },
+    { id: 14, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 1h 56m", category: "Sci-Fi" },
+    { id: 15, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 44m", category: "Terror" },
+    { id: 16, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 2h 03m", category: "Suspenso" },
+    { id: 17, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 1h 48m", category: "Sci-Fi" },
+    { id: 18, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 1h 59m", category: "Suspenso" },
+    { id: 19, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 50m", category: "Acción" },
+    { id: 20, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 2h 02m", category: "Terror" },
+    { id: 21, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 45m", category: "Acción" },
+    { id: 22, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 08m", category: "Sci-Fi" },
+    { id: 23, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 38m", category: "Terror" },
+    { id: 24, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 2h 10m", category: "Suspenso" },
+    { id: 25, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 25m", category: "Sci-Fi" },
+    { id: 26, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 1h 52m", category: "Sci-Fi" },
+    { id: 27, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 2h 05m", category: "Suspenso" },
+    { id: 28, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 38m", category: "Acción" },
+    { id: 29, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 41m", category: "Terror" },
+    { id: 30, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 57m", category: "Acción" },
+    { id: 31, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 11m", category: "Sci-Fi" },
+    { id: 32, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 49m", category: "Terror" },
+    { id: 33, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 1h 52m", category: "Suspenso" },
+    { id: 34, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 18m", category: "Sci-Fi" },
+    { id: 35, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 46m", category: "Acción" },
+    { id: 36, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 55m", category: "Terror" },
+    { id: 37, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 2h 04m", category: "Acción" },
+    { id: 38, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 1h 50m", category: "Sci-Fi" },
+    { id: 39, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 43m", category: "Terror" },
+    { id: 40, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 1h 48m", category: "Suspenso" },
+    { id: 41, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 1h 55m", category: "Sci-Fi" },
+    { id: 42, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 2h 01m", category: "Suspenso" },
+    { id: 43, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 1h 42m", category: "Acción" },
+    { id: 44, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 39m", category: "Terror" },
+    { id: 45, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Acción • 2h 07m", category: "Acción" },
+    { id: 46, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 15m", category: "Sci-Fi" },
+    { id: 47, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Terror • 1h 46m", category: "Terror" },
+    { id: 48, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 1h 58m", category: "Suspenso" },
+    { id: 49, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Sci-Fi • 2h 20m", category: "Sci-Fi" },
+    { id: 50, title: "Titulo - No disponible", thumb: "https://lh3.googleusercontent.com/d/1dygIwm4T9gP2QboxGVHouGm5i95KjjAe=w1000", videoUrl: "https://ilepalusciers.gieovannyfrias.com/Videos/No_disponible.webm", genre: "Suspenso • 2h 12m", category: "Suspenso" }
+];
+
+let currentMoviesList = contentDatabase; 
+let currentPage = 0;
+const moviesPerPage = 25; 
+let searchText = ""; 
+let selectedCategory = "todos";
+
+/* ==========================================================================
+   2. INICIALIZACIÓN PRINCIPAL (DOMContentLoaded)
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    showPage(0); 
+    setupCategoryFilters();
+    setupRealTimeSearch();
+    setupSliderControls();
+    setupModalEvents();
+});
+
+/* ==========================================================================
+   3. SISTEMA DE PAGINACIÓN Y RENDERIZADO
+   ========================================================================== */
+function showPage(pageIndex) {
+    currentPage = pageIndex;
+    const startIndex = currentPage * moviesPerPage;
+    const endIndex = startIndex + moviesPerPage;
+    renderSlider(currentMoviesList.slice(startIndex, endIndex), "movie-container");
+}
+
+function renderSlider(moviesList, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+
+    if (moviesList.length === 0) {
+        container.innerHTML = "<p style='padding: 20px; color: #a0a0aa; text-align: center; width: 100%;'>No se encontraron títulos disponibles.</p>";
+        return;
+    }
+
+    moviesList.forEach(movie => {
+        const card = document.createElement("div");
+        card.classList.add("movie-card");
+        card.innerHTML = `
+            <div class="img-container">
+                <img src="${movie.thumb}" alt="${movie.title}">
+                <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+            </div>
+            <div class="card-details">
+                <h4>${movie.title}</h4>
+                <div class="card-meta">${movie.genre}</div>
+            </div>
+        `;
+
+        card.addEventListener("click", () => openVideoPlayer(movie));
+        container.appendChild(card);
+    });
+}
+
+/* ==========================================================================
+   4. CONTROLADORES DEL REPRODUCTOR (MODAL RE-ESTRUCTURADO)
+   ========================================================================== */
+function openVideoPlayer(movie) {
+    const modal = document.getElementById("video-modal");
+    // Selecciona el contenedor de tu HTML de forma híbrida para máxima compatibilidad
+    const wrapper = document.getElementById("video-wrapper-container") || document.querySelector(".video-player-container") || document.querySelector(".video-wrapper");
+    
+    if (!modal || !wrapper) return;
+
+    // Actualiza los textos informativos en el modal
+    const titleElement = document.getElementById("modal-video-title");
+    if (titleElement) titleElement.innerText = movie.title;
+    
+    const descElement = document.getElementById("modal-video-desc") || document.getElementById("modal-video-genre") || document.getElementById("modal-details-desc");
+    if (descElement) descElement.innerText = movie.genre;
+    
+    // SOLUCIÓN AL FALLO: Inyectamos el reproductor de video con autoplay, controles y origen limpio
+    wrapper.innerHTML = `
+        <video id="main-video" controls autoplay poster="${movie.thumb}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+            <source src="${movie.videoUrl}" type="video/mp4">
+            <source src="${movie.videoUrl}" type="video/webm">
+            Tu navegador no soporta la reproducción de video HTML5.
+        </video>
+    `;
+    
+    // Abrimos visualmente la ventana modal
+    modal.classList.add("active");
+    
+    // Capturamos el nuevo elemento recién creado en el DOM para forzar su arranque
+    const nuevoVideoNode = document.getElementById("main-video");
+    if (nuevoVideoNode) {
+        nuevoVideoNode.load();
+        // El método .play() ahora sí se ejecuta sobre la etiqueta de video correcta
+        nuevoVideoNode.play().catch(err => {
+            console.log("La reproducción automática requiere interacción previa del usuario o permisos locales:", err);
+        });
+    }
+}
+
+function setupModalEvents() {
+    const modal = document.getElementById("video-modal");
+    const wrapper = document.getElementById("video-wrapper-container") || document.querySelector(".video-player-container") || document.querySelector(".video-wrapper");
+    const closeBtn = document.getElementById("close-modal");
+    const backdrop = document.getElementById("modal-backdrop") || document.querySelector(".modal-backdrop");
+
+    const closeModal = () => {
+        if (modal) modal.classList.remove("active");
+        
+        // Buscamos el elemento de video actual para detenerlo antes de destruirlo
+        const videoActivo = document.getElementById("main-video");
+        if (videoActivo) {
+            videoActivo.pause();
+            videoActivo.src = "";
+        }
+        
+        // Vaciamos el contenedor para limpiar la memoria de video asignada por el navegador
+        if (wrapper) {
+            wrapper.innerHTML = ""; 
+        }
+    };
+
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (backdrop) backdrop.addEventListener("click", closeModal);
+    
+    // Permitir el cierre del reproductor presionando la tecla Escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+    });
+}
+
+/* ==========================================================================
+   5. FILTRADO AVANZADO Y BÚSQUEDA CRUZADA
+   ========================================================================== */
+function setupCategoryFilters() {
+    const buttons = document.querySelectorAll(".cat-btn");
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            
+            // Captura el género desde el atributo de tu botón
+            selectedCategory = btn.getAttribute("data-genre") || "todos";
+            aplicarFiltrosCruzados();
+        });
+    });
+}
+
+function setupRealTimeSearch() {
+    const searchInput = document.getElementById("search-input");
+    if (!searchInput) return;
+    
+    searchInput.addEventListener("input", (e) => {
+        searchText = limpiarTexto(e.target.value);
+        aplicarFiltrosCruzados();
+    });
+}
+
+function aplicarFiltrosCruzados() {
+    const sectionTitle = document.getElementById("section-title-dynamic");
+
+    // Filtrar la base de datos comparando categoría y barra de búsqueda al mismo tiempo
+    currentMoviesList = contentDatabase.filter(movie => {
+        const coincideCategoria = (selectedCategory === "todos" || movie.category === selectedCategory);
+        const coincideBuscador = limpiarTexto(movie.title).includes(searchText);
+        return coincideCategoria && coincideBuscador;
+    });
+
+    // Actualiza el encabezado del catálogo dinámicamente si el elemento existe
+    if (sectionTitle) {
+        sectionTitle.textContent = selectedCategory === "todos" ? "Títulos Recomendados" : `Género: ${selectedCategory}`;
+    }
+    
+    // Regresa siempre a la primera página (índice 0) de los nuevos resultados filtrados
+    showPage(0);
+}
+
+/* ==========================================================================
+   6. CONTROLES DE DESPLAZAMIENTO DEL SLIDER (PAGINACIÓN POR BLOQUES)
+   ========================================================================== */
+function setupSliderControls() {
+    const btnRight = document.getElementById("slide-right");
+    const btnLeft = document.getElementById("slide-left");
+
+    if (btnRight) {
+        btnRight.addEventListener("click", () => { 
+            // Si quedan películas en el arreglo para llenar otra página, avanza
+            if ((currentPage + 1) * moviesPerPage < currentMoviesList.length) {
+                showPage(currentPage + 1); 
+            }
+        });
+    }
+    if (btnLeft) {
+        btnLeft.addEventListener("click", () => { 
+            // Si el usuario no está en la primera página, retrocede
+            if (currentPage > 0) {
+                showPage(currentPage - 1); 
+            }
+        });
+    }
+}
+
+/**
+ * Sanitiza textos removiendo diacríticos (acentos), espacios y mayúsculas
+ */
+function limpiarTexto(texto) {
+    return texto
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+}
+
+
+
+  </script>
+</body>
+</html>

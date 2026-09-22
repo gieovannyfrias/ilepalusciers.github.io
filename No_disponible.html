@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>No disponible </title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+    <!-- Iconos Premium FontAwesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+<!-- Título que verá Google -->
+<meta name="title" content="No disponible">
+<meta name="description" content="Nuestros servidores están recibiendo un mantenimiento de rutina o experimentando una alta demanda de tráfico.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="No disponible">
+  <meta property="og:description" content="Nuestros servidores están recibiendo un mantenimiento de rutina o experimentando una alta demanda de tráfico.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/No_disponible">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="No disponible">
+  <meta name="twitter:description" content="Nuestros servidores están recibiendo un mantenimiento de rutina o experimentando una alta demanda de tráfico.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+<body>
+<div class="section_0">
+    <!-- Capa de ondas de fondo -->
+    <div class="radar-bg">
+        <div class="radar-wave"></div>
+        <div class="radar-wave"></div>
+        <div class="radar-wave"></div>
+    </div>
+
+    <div class="error-container">
+        <!-- Icono animado de engranaje/sincronización -->
+        <div class="icon-container">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        
+        <!-- Mensajes informativos -->
+        <h1 class="error-title">Actualizando Canales de Transmisión</h1>
+        <p class="error-desc">Nuestros servidores están recibiendo un mantenimiento de rutina o experimentando una alta demanda de tráfico. Estamos optimizando la señal para que sigas disfrutando de tu contenido sin interrupciones.</p>
+        
+        <!-- Botón interactivo para recargar la ubicación actual -->
+        <button onclick="window.location.reload();" class="btn-retry">
+            <i class="fas fa-redo-alt"></i> Reintentar Conexión
+        </button>
+    </div>
+  </div>
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --primary-gradient: linear-gradient(45deg, #7000ff, #ff007f);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+          zoom:75%;
+        }
+      .section_0{
+          height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+      }
+        /* Ondas de radar de fondo indicando reconexión */
+        .radar-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .radar-wave {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(112, 0, 255, 0.15);
+            border-radius: 50%;
+            animation: ripple 4s infinite linear;
+        }
+
+        .radar-wave:nth-child(2) { animation-delay: 1.3s; }
+        .radar-wave:nth-child(3) { animation-delay: 2.6s; }
+
+        .error-container {
+            text-align: center;
+            max-width: 520px;
+            padding: 30px;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Icono de carga/mantenimiento con degradado */
+        .icon-container {
+            font-size: 80px;
+            margin-bottom: 25px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .icon-container i {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: spin 4s infinite linear;
+        }
+
+        .error-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .error-desc {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .btn-retry {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-retry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(112, 0, 255, 0.5);
+        }
+
+        .btn-retry i {
+            font-size: 14px;
+        }
+
+        /* Animación para simular recarga de página al pulsar reintentar */
+        .btn-retry:active i {
+            transform: rotate(180deg);
+            transition: transform 0.2s;
+        }
+
+        /* --- KEYFRAMES ANIMACIONES --- */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        /* Ajustes para dispositivos móviles */
+        @media (max-width: 576px) {
+            .icon-container { font-size: 65px; }
+            .error-title { font-size: 21px; }
+            .error-desc { font-size: 14px; }
+            .radar-wave { width: 200px; height: 200px; }
+        }
+    </style>
+  <script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+</body>
+</html>
