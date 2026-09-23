@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Contacto</title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+<!-- Título que verá Google -->
+<meta name="title" content="Contacto">
+<meta name="description" content="Ponte en contacto con nuestro equipo. Resuelve tus dudas, solicita información o visítanos. Estamos listos para ayudarte hoy mismo.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contacto">
+  <meta property="og:description" content="Ponte en contacto con nuestro equipo. Resuelve tus dudas, solicita información o visítanos. Estamos listos para ayudarte hoy mismo.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Contacto">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contacto">
+  <meta name="twitter:description" content="Ponte en contacto con nuestro equipo. Resuelve tus dudas, solicita información o visítanos. Estamos listos para ayudarte hoy mismo.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+<body>
+<div class="section_0">
+ <div class="contact-container">
+    <div class="contact-header">
+        <h1>Contacto</h1>
+        <p>¿Tienes problemas con la señal, fallas en la cartelera,hacer colaboración,publicidad o ideas para mejorar la plataforma? Envíanos un mensaje directo.</p>
+    </div>
+
+    <!-- Se mantiene el onsubmit para manejar la animación y el envío con AJAX -->
+    <form id="contact-form" action="https://formspree.io/f/xaenjloy" method="POST" onsubmit="enviarMensaje(event)">
+        <!-- Nombre -->
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" required>
+            <i class="fas fa-user"></i>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico" required>
+            <i class="fas fa-envelope"></i>
+        </div>
+
+        <!-- Asunto -->
+        <div class="form-group">
+            <input type="text" class="form-control" id="subject" name="subject" placeholder="Asunto / Tipo de reporte" required>
+            <i class="fas fa-exclamation-circle"></i>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group textarea-group">
+            <textarea class="form-control" id="message" name="message" placeholder="Escribe tu mensaje detallado aquí..." required></textarea>
+            <i class="fas fa-comment-alt"></i>
+        </div>
+
+        <!-- Botón de Envío -->
+        <button type="submit" class="btn-submit" id="submit-btn">
+            <i class="fas fa-paper-plane"></i> Enviar
+        </button>
+    </form>
+
+    <!-- Estado del envío -->
+    <div class="form-status" id="form-status"></div>
+</div>
+
+  </div>
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: #121216;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --primary-gradient: linear-gradient(45deg, #7000ff, #ff007f);
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+          zoom:75%;
+        }
+      .section_0{
+          min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          
+      }
+        .contact-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+          padding-top: 100px;
+        }
+
+        /* Destello decorativo de fondo */
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: -150px; right: -150px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .contact-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-header p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* Estructura de Formularios */
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .form-group.textarea-group i {
+            top: 20px;
+            transform: none;
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px 15px 12px 45px;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #7000ff;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-control:focus + i {
+            color: #7000ff;
+        }
+
+        textarea.form-control {
+            resize: none;
+            min-height: 140px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary-gradient);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(112, 0, 255, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* Notificación de envío simulada */
+        .form-status {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .form-status.success {
+            display: block;
+            background-color: rgba(0, 230, 118, 0.1);
+            color: #00e676;
+            border: 1px solid rgba(0, 230, 118, 0.2);
+        }
+
+        /* Adaptación Responsiva */
+        @media (max-width: 576px) {
+            .contact-container { padding: 30px 20px; }
+            .contact-header h1 { font-size: 24px; }
+            .contact-header p { font-size: 14px; }
+        }
+    </style>
+  <script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+    <script>
+  function enviarMensaje(event) { 
+    event.preventDefault(); // Evita que la página se recargue
+    
+    const form = event.target;
+    const btn = document.getElementById('submit-btn'); 
+    const status = document.getElementById('form-status'); 
+    
+    // 1. Mostrar estado de carga en el botón
+    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Enviando...`; 
+    btn.style.pointerEvents = 'none'; 
+    
+    // 2. Capturar los datos reales del formulario
+    const data = new FormData(form);
+    
+    // 3. Enviar la petición AJAX a Formspree
+    fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Envío exitoso
+            btn.innerHTML = `<i class="fas fa-check"></i> Reporte Recibido`; 
+            status.textContent = '¡Señal enviada con éxito! Nuestro equipo técnico responderá a tus coordenadas pronto.'; 
+            status.className = 'form-status success'; 
+            form.reset(); // Limpia los campos del formulario
+        } else {
+            // Respuesta del servidor con error
+            throw new Error('Error en el servidor');
+        }
+    })
+    .catch(error => {
+        // Error de red o fallo en el envío
+        btn.innerHTML = `<i class="fas fa-paper-plane"></i> Intentar de nuevo`;
+        btn.style.pointerEvents = 'auto'; // Reactiva el botón
+        status.textContent = 'Oops! Hubo un problema al enviar el reporte. Por favor, inténtalo más tarde.'; 
+        status.className = 'form-status error';
+    });
+}
+
+    </script>
+
+</body>
+</html>
