@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Plataformas de streaming</title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+  <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+<!-- Título que verá Google -->
+<meta name="title" content="Plataformas de streaming">
+<meta name="description" content="Nuestro servicios de streaming con la infraestructura comercial y de licencias de nuestro sitio.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Acerca de nosotros">
+  <meta property="og:description" content="Nuestro servicios de streaming con la infraestructura comercial y de licencias de nuestro sitio.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Plataformas">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Plataformas de streaming">
+  <meta name="twitter:description" content="Nuestro servicios de streaming con la infraestructura comercial y de licencias de nuestro sitio.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+<body>
+
+<div class="container">
+    
+    <!-- Encabezado y Selector Dinámico -->
+    <header class="header-seccion">
+        <h1>Plataformas de Distribución</h1>
+        <p>Elige o unifica los servicios de streaming con la infraestructura comercial y de licencias de nuestra agencia.</p>
+        
+        <div class="selector-moneda">
+            <button class="btn-moneda active" data-moneda="usd">USD ($)</button>
+            <button class="btn-moneda" data-moneda="mxn">MXN ($)</button>
+        </div>
+    </header>
+
+    <!-- Grid de Planes Interactivos -->
+    <section class="grid-planes">
+        
+        <!-- Plan Básico -->
+        <div class="tarjeta-plan">
+            <div class="plan-icono"><i class="fa-solid fa-tv"></i></div>
+            <h2 class="plan-nombre">Plan Essential</h2>
+            <div class="plan-precio" id="precio-essential" data-usd="8.99" data-mxn="169.00">
+                $8.99 <span>/ mes</span>
+            </div>
+            <ul class="plan-caracteristicas">
+                <li><i class="fa-solid fa-circle-check check-si"></i> Calidad Estándar (HD)</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> 1 Pantalla simultánea</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> Catálogo completo de Agencia</li>
+                <li><i class="fa-solid fa-circle-xmark check-no"></i> Descargas offline</li>
+            </ul>
+          <a href="/No_disponible"> <button class="btn-contratar">Adquirir Licencia</button></a>
+        </div>
+
+        <!-- Plan Pro -->
+        <div class="tarjeta-plan popular">
+            <div class="badge-popular">Más Recomendado</div>
+            <div class="plan-icono"><i class="fa-solid fa-clapperboard"></i></div>
+            <h2 class="plan-nombre">Agencia Pro</h2>
+            <div class="plan-precio" id="precio-pro" data-usd="13.99" data-mxn="249.00">
+                $13.99 <span>/ mes</span>
+            </div>
+            <ul class="plan-caracteristicas">
+                <li><i class="fa-solid fa-circle-check check-si"></i> Calidad Full HD (1080p)</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> 2 Pantallas en simultáneo</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> Descargas offline habilitadas</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> Acceso a Estrenos Anticipados</li>
+            </ul>
+          <a href="/No_disponible"> <button class="btn-contratar">Adquirir Licencia</button></a>
+        </div>
+
+        <!-- Plan Enterprise -->
+        <div class="tarjeta-plan">
+            <div class="plan-icono"><i class="fa-solid fa-crown"></i></div>
+            <h2 class="plan-nombre">Cinema Enterprise</h2>
+            <div class="plan-precio" id="precio-enterprise" data-usd="19.99" data-mxn="359.00">
+                $19.99 <span>/ mes</span>
+            </div>
+            <ul class="plan-caracteristicas">
+                <li><i class="fa-solid fa-circle-check check-si"></i> Calidad Ultra HD (4K) + HDR</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> 4 Pantallas en simultáneo</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> Audio Espacial Dolby Atmos</li>
+                <li><i class="fa-solid fa-circle-check check-si"></i> Pases VIP a Festivales de Cine</li>
+            </ul>
+          <a href="/No_disponible"> <button class="btn-contratar">Adquirir Licencia</button></a>
+        </div>
+    </section>
+
+    <!-- Tabla Comparativa -->
+    <section class="seccion-tabla">
+        <h2 class="titulo-tabla">Comparativa de Atributos Técnicos</h2>
+        <div class="contenedor-tabla">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Essential</th>
+                        <th>Agencia Pro</th>
+                        <th>Cinema Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Resolución Máxima</td>
+                        <td>HD (720p)</td>
+                        <td>Full HD (1080p)</td>
+                        <td>Ultra HD (4K) + HDR</td>
+                    </tr>
+                    <tr>
+                        <td>Dispositivos a la vez</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Descargas en Dispositivos</td>
+                        <td><i class="fa-solid fa-xmark icon-no"></i> No</td>
+                        <td><i class="fa-solid fa-check icon-si"></i> Hasta 20 títulos</td>
+                        <td><i class="fa-solid fa-check icon-si"></i> Ilimitadas</td>
+                    </tr>
+                    <tr>
+                        <td>Soporte de Audio</td>
+                        <td>Estéreo 2.0</td>
+                        <td>Surround 5.1</td>
+                        <td>Dolby Atmos / Espacial</td>
+                    </tr>
+                    <tr>
+                        <td>Acceso a Festivales</td>
+                        <td><i class="fa-solid fa-xmark icon-no"></i> No</td>
+                        <td><i class="fa-solid fa-xmark icon-no"></i> No</td>
+                        <td><i class="fa-solid fa-check icon-si"></i> Sí (Incluido)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Preguntas Frecuentes (FAQs) -->
+    <section class="seccion-faq">
+        <h2 class="titulo-faq">Preguntas Frecuentes</h2>
+        
+        <div class="faq-item">
+            <button class="faq-pregunta">
+                ¿Puedo cambiar de plan en cualquier momento?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-respuesta">
+                <p>Sí, por supuesto. Puedes subir o bajar de categoría de plan en el instante que lo desees desde tu panel corporativo. Los cambios de tarifa se prorratearán automáticamente en tu próximo ciclo de facturación.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta">
+                ¿Cómo funciona el acceso VIP a festivales?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-respuesta">
+                <p>El plan Cinema Enterprise otorga credenciales digitales exclusivas para presenciar transmisiones en vivo, ruedas de prensa virtuales y votaciones de jurado dentro de los festivales de cine aliados con nuestra agencia global.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta">
+                ¿Hay contratos de permanencia forzosa?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-respuesta">
+                <p>Ninguno. Todas las suscripciones y licencias se emiten bajo un modelo mensual recurrente. Puedes cancelar el servicio de distribución cuando quieras sin penalizaciones ocultas.</p>
+            </div>
+        </div>
+    </section>
+</div>
+  
+    <style>
+        :root {
+            --bg-principal: #09090b;
+            --bg-tarjeta: #14141b;
+            --bg-tarjeta-hover: #1c1c24;
+            --rojo-premium: #e50914;
+            --oro-premium: #ffb703;
+            --texto-blanco: #ffffff;
+            --texto-gris: #a1a1aa;
+            --borde: rgba(255, 255, 255, 0.08);
+            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            overflow-x: hidden;
+            line-height: 1.6;
+          zoom:75%;
+        }
+
+        /* Contenedor Global */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+          padding-top: 100px;
+        }
+
+        /* Encabezado Principal */
+        .header-seccion {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header-seccion h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--texto-gris) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-seccion p {
+            color: var(--texto-gris);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Selector de Moneda */
+        .selector-moneda {
+            display: inline-flex;
+            background: var(--bg-tarjeta);
+            padding: 0.4rem;
+            border-radius: 50px;
+            border: 1px solid var(--borde);
+            gap: 0.5rem;
+        }
+
+        .btn-moneda {
+            background: transparent;
+            border: none;
+            color: var(--texto-gris);
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transicion);
+        }
+
+        .btn-moneda.active {
+            background: var(--rojo-premium);
+            color: var(--texto-blanco);
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+        }
+
+        /* Grid de Planes/Plataformas */
+        .grid-planes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .tarjeta-plan {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: var(--transicion);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarjeta-plan:hover {
+            transform: translateY(-10px);
+            background: var(--bg-tarjeta-hover);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Variación "Popular" con brillo Oro */
+        .tarjeta-plan.popular {
+            border-color: var(--oro-premium);
+            box-shadow: 0 0 20px rgba(255, 183, 3, 0.1);
+        }
+
+        .tarjeta-plan.popular .badge-popular {
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            background: var(--oro-premium);
+            color: #000;
+            padding: 0.3rem 1rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan-icono {
+            font-size: 2.5rem;
+            color: var(--rojo-premium);
+            margin-bottom: 1rem;
+        }
+
+        .tarjeta-plan.popular .plan-icono {
+            color: var(--oro-premium);
+        }
+
+        .plan-nombre {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-precio {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+        }
+
+        .plan-precio span {
+            font-size: 1rem;
+            color: var(--texto-gris);
+            font-weight: 400;
+        }
+
+        .plan-caracteristicas {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .plan-caracteristicas li {
+            margin-bottom: 0.8rem;
+            color: var(--texto-gris);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .plan-caracteristicas li i {
+            color: #2ec4b6;
+        }
+
+        .btn-contratar {
+            width: 100%;
+            background: transparent;
+            border: 2px solid var(--borde);
+            color: var(--texto-blanco);
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicion);
+        }
+
+        .tarjeta-plan:hover .btn-contratar {
+            border-color: var(--rojo-premium);
+            background: var(--rojo-premium);
+        }
+
+        .tarjeta-plan.popular .btn-contratar {
+            border-color: var(--oro-premium);
+            background: var(--oro-premium);
+            color: #000;
+        }
+
+        .tarjeta-plan.popular:hover .btn-contratar {
+            background: transparent;
+            color: var(--oro-premium);
+        }
+
+        /* Tabla Comparativa */
+        .seccion-tabla {
+            margin-bottom: 6rem;
+        }
+
+        .titulo-tabla {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contenedor-tabla {
+            overflow-x: auto;
+            background: var(--bg-tarjeta);
+            border-radius: 20px;
+            border: 1px solid var(--borde);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        th {
+            background: rgba(255,255,255,0.02);
+            font-weight: 600;
+            color: var(--texto-blanco);
+        }
+
+        td {
+            color: var(--texto-gris);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check-si { color: #2ec4b6; }
+        .check-no { color: #e71d36; }
+
+        /* Acordeón FAQs */
+        .seccion-faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .titulo-faq {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transicion);
+        }
+
+        .faq-pregunta {
+            padding: 1.5rem;
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--texto-blanco);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-pregunta i {
+            transition: var(--transicion);
+            color: var(--rojo-premium);
+        }
+
+        .faq-respuesta {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .faq-respuesta p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--texto-gris);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-pregunta i {
+            transform: rotate(180deg);
+        }
+
+        /* Responsivo Completo */
+        @media (max-width: 768px) {
+            .header-seccion h1 { font-size: 2.2rem; }
+            .container { padding: 2rem 1rem; padding-top: 100px;}
+            th, td { padding: 1rem; font-size: 0.9rem; }
+        }
+    </style>
+  <script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+    <!-- Script de Funcionalidad Dinámica -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. LÓGICA SELECTOR DE MONEDA ---
+            const botonesMoneda = document.querySelectorAll('.btn-moneda');
+            const elementosPrecio = document.querySelectorAll('.plan-precio');
+
+            botonesMoneda.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    botonesMoneda.forEach(b => b.classList.remove('active'));
+                    boton.classList.add('active');
+
+                    const monedaSeleccionada = boton.getAttribute('data-moneda');
+
+                    elementosPrecio.forEach(contenedor => {
+                        const valorUsd = contenedor.getAttribute('data-usd');
+                        const valorMxn = contenedor.getAttribute('data-mxn');
+
+                        if (monedaSeleccionada === 'mxn') {
+                            contenedor.innerHTML = `$${valorMxn} <span>/ mes (MXN)</span>`;
+                        } else {
+                            contenedor.innerHTML = `$${valorUsd} <span>/ mes</span>`;
+                        }
+                    });
+                });
+            });
+
+            // --- 2. LÓGICA DEL ACORDEÓN (FAQs) ---
+            const preguntasFaq = document.querySelectorAll('.faq-pregunta');
+
+            preguntasFaq.forEach(pregunta => {
+                pregunta.addEventListener('click', () => {
+                    const itemActual = pregunta.parentElement;
+                    const respuesta = itemActual.querySelector('.faq-respuesta');
+                    const estaActivo = itemActual.classList.contains('active');
+
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-respuesta').style.maxHeight = null;
+                    });
+
+                    if (!estaActivo) {
+                        itemActual.classList.add('active');
+                        respuesta.style.maxHeight = respuesta.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
