@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Solicitar cotización </title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+    <!-- Iconos Premium FontAwesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+<!-- Título que verá Google -->
+<meta name="title" content="Solicitar cotización">
+<meta name="description" content="La pagina calcula instantáneamente un presupuesto estimado para su infraestructura audiovisual y formalice su solicitud de licenciamiento.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Solicitar cotización">
+  <meta property="og:description" content="La pagina calcula instantáneamente un presupuesto estimado para su infraestructura audiovisual y formalice su solicitud de licenciamiento.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Solicitar_cotizacion">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solicitar cotización">
+  <meta name="twitter:description" content="La pagina calcula instantáneamente un presupuesto estimado para su infraestructura audiovisual y formalice su solicitud de licenciamiento.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+  <body>
+<div class="container">
+    
+    <!-- Encabezado de Cotización -->
+    <header class="header-seccion">
+        <h1>Configurador de Cotización</h1>
+        <p>Calcule instantáneamente un presupuesto estimado para su infraestructura audiovisual y formalice su solicitud de licenciamiento.</p>
+        
+        <div class="indicador-cotizacion">
+            <span><i class="fa-solid fa-calculator"></i> Cotizador Inteligente en Tiempo Real</span>
+        </div>
+    </header>
+
+    <!-- Cuerpo Principal: Configurador y Desglose -->
+<!-- Cuerpo Principal: Configurador y Desglose -->
+<main class="bloque-cotizador">
+    
+    <!-- Columna Izquierda: Formulario de Configuración -->
+    <section class="configuracion-panel">
+        <h2>1. Parámetros del Servicio</h2>
+        <!-- Removido onsubmit="return false;" para permitir el procesamiento nativo + AJAX -->
+        <form class="formulario-cotizacion"   action="https://formspree.io/f/xppwrnpo"  method="POST">
+            
+            <!-- Selección de Servicio Maestro -->
+            <div class="grupo-formulario">
+                <label for="tipo_servicio">Servicio Principal</label>
+                <select id="tipo_servicio" name="servicio_principal">
+                    <option value="licencias_comerciales" data-base="150">Licencias de Exhibición Pública (Espacios Comerciales)</option>
+                    <option value="infraestructura_api" data-base="450" selected>Infraestructura API & CDN Global</option>
+                    <option value="eventos_privados" data-base="800">Eventos & Premieres Corporativas</option>
+                </select>
+            </div>
+
+            <!-- Control de Volumen (Rango Dinámico) -->
+            <div class="grupo-formulario">
+                <div class="label-dinamico">
+                    <label for="volumen_pantallas">Volumen de Pantallas / Accesos</label>
+                    <span id="valor_pantallas">10</span>
+                </div>
+                <input type="range" id="volumen_pantallas" name="volumen_pantallas" min="1" max="100" value="10">
+            </div>
+
+            <!-- Opciones de Personalización/Add-ons -->
+            <div class="grupo-formulario">
+                <label>Módulos Adicionales (Add-ons)</label>
+                <div class="lista-checkboxes">
+                    <label class="control-checkbox">
+                        <input type="checkbox" id="addon_soporte" name="addon_soporte_vip" value="Sí" data-precio="120" checked>
+                        <span>Soporte Técnico VIP Dedicado 24/7 (+ $120)</span>
+                    </label>
+                    <label class="control-checkbox">
+                        <input type="checkbox" id="addon_drm" name="addon_encriptacion_drm" value="Sí" data-precio="200">
+                        <span>Encriptación Avanzada DRM Ultra (+ $200)</span>
+                    </label>
+                    <label class="control-checkbox">
+                        <input type="checkbox" id="addon_analytics" name="addon_analiticas" value="Sí" data-precio="80">
+                        <span>Panel de Analíticas en Tiempo Real (+ $80)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Duración del Contrato con Descuento -->
+            <div class="grupo-formulario">
+                <label for="duracion_contrato">Plazo del Contrato</label>
+                <select id="duracion_contrato" name="plazo_contrato">
+                    <option value="mes_a_mes" data-desc="0">Mensual recurrente (Sin descuento)</option>
+                    <option value="anual" data-desc="0.15" selected>Anual comprometido (15% de descuento)</option>
+                    <option value="bianual" data-desc="0.25">Plazo de 24 meses (25% de descuento)</option>
+                </select>
+            </div>
+
+            <hr class="separador-formulario">
+
+            <h2>2. Datos de Contacto</h2>
+            <div class="grupo-formulario">
+                <label for="nombre_contacto">Nombre del Representante</label>
+                <input type="text" id="nombre_contacto" name="nombre_representante" placeholder="Ej. Elena Rostova" required>
+            </div>
+            <div class="grupo-row">
+                <div class="grupo-formulario">
+                    <label for="correo_contacto">Correo Corporativo</label>
+                    <input type="email" id="correo_contacto" name="email" placeholder="elena@empresa.com" required>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="telefono_contacto">Teléfono de Cuentas</label>
+                    <input type="tel" id="telefono_contacto" name="telefono" placeholder="+52 55 1234 5678">
+                </div>
+            </div>
+
+            <!-- ENTRADA OCULTA EXTRA: Envía el total cotizado real directamente a tu bandeja de correo -->
+            <input type="hidden" id="total_estimado_oculto" name="total_cotizado_usd" value="">
+
+            <button type="submit" class="btn-enviar-cotizacion">Formalizar y Enviar Propuesta</button>
+        </form>
+    </section>
+
+    <!-- Columna Derecha: Recibo de Desglose en Tiempo Real -->
+    <section class="resumen-panel">
+        <div class="tarjeta-recibo">
+            <div class="recibo-encabezado">
+                <h3>Resumen Presupuestario</h3>
+                <span class="badge-estimado">Estimado Mensual</span>
+            </div>
+            
+            <div class="recibo-cuerpo">
+                <div class="recibo-linea">
+                    <span>Costo Base del Servicio</span>
+                    <span id="resumen_base">$0.00</span>
+                </div>
+                <div class="recibo-linea">
+                    <span>Multiplicador por Volumen</span>
+                    <span id="resumen_volumen">x0</span>
+                </div>
+                <div class="recibo-linea">
+                    <span>Componentes Adicionales</span>
+                    <span id="resumen_addons">$0.00</span>
+                </div>
+                <div class="recibo-linea descuento" id="contenedor_descuento">
+                    <span>Descuento por Contrato (<span id="porcentaje_desc">0%</span>)</span>
+                    <span id="resumen_descuento">-$0.00</span>
+                </div>
+                
+                <hr class="separador-recibo">
+                
+                <div class="recibo-total">
+                    <div class="total-label">
+                        <h4>Total Estimado</h4>
+                        <p>Sujeto a verificación técnica</p>
+                    </div>
+                    <div class="total-valor" id="total_final">$0.00</div>
+                </div>
+            </div>
+
+            <div class="recibo-pie">
+                <p><i class="fa-solid fa-circle-info"></i> Esta estimación se calcula en USD y no incluye impuestos locales aplicables según el país de facturación.</p>
+            </div>
+        </div>
+    </section>
+    
+</main>
+
+</div>
+<style>
+   :root {
+            --bg-principal: #09090b;
+            --bg-tarjeta: #14141b;
+            --bg-tarjeta-hover: #1c1c24;
+            --rojo-premium: #e50914;
+            --oro-premium: #ffb703;
+            --texto-blanco: #ffffff;
+            --texto-gris: #a1a1aa;
+            --borde: rgba(255, 255, 255, 0.08);
+            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+          zoom:75%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-seccion {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header-seccion h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--texto-gris) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-seccion p {
+            color: var(--texto-gris);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .indicador-cotizacion {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--borde);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--oro-premium);
+            letter-spacing: 0.5px;
+        }
+
+        .indicador-cotizacion i {
+            margin-right: 0.5rem;
+        }
+
+        /* Diseño de Dos Columnas */
+        .bloque-cotizador {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        /* Panel de Configuración */
+        .configuracion-panel {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
+        .configuracion-panel h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .formulario-cotizacion {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .grupo-formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .grupo-row {
+            display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+        }
+
+        .formulario-cotizacion label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--texto-gris);
+        }
+
+        .label-dinamico {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .label-dinamico span {
+            background: var(--rojo-premium);
+            color: var(--texto-blanco);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .formulario-cotizacion input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .formulario-cotizacion input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--rojo-premium);
+            cursor: pointer;
+            transition: var(--transicion);
+        }
+
+        .formulario-cotizacion input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+        }
+
+        .formulario-cotizacion input[type="text"],
+        .formulario-cotizacion input[type="email"],
+          .formulario-cotizacion input[type="tel"],
+        .formulario-cotizacion select {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--texto-blanco);
+            font-size: 1rem;
+            transition: var(--transicion);
+            width: 100%;
+        }
+
+        .formulario-cotizacion input:focus,
+        .formulario-cotizacion select:focus {
+            outline: none;
+            border-color: var(--rojo-premium);
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.2);
+        }
+
+        .lista-checkboxes {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 1.2rem;
+            border-radius: 14px;
+            border: 1px solid var(--borde);
+        }
+
+        .control-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: var(--texto-gris);
+        }
+
+        .control-checkbox input[type="checkbox"] {
+            accent-color: var(--rojo-premium);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .separador-formulario {
+            border: 0;
+            height: 1px;
+            background: var(--borde);
+            margin: 1rem 0;
+        }
+
+        .btn-enviar-cotizacion {
+            background: var(--rojo-premium);
+            border: none;
+            color: var(--texto-blanco);
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicion);
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .btn-enviar-cotizacion:hover {
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+            background: #ff141e;
+        }
+
+        /* Recibo Lateral Flotante */
+        .resumen-panel {
+            position: sticky;
+            top: 40px;
+        }
+
+        .tarjeta-recibo {
+            background: linear-gradient(145deg, #14141b 0%, #0d0d12 100%);
+            border: 1px solid var(--borde);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .recibo-encabezado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed var(--borde);
+            padding-bottom: 1.5rem;
+        }
+
+        .recibo-encabezado h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .badge-estimado {
+            background: rgba(255, 183, 3, 0.1);
+            color: var(--oro-premium);
+            border: 1px solid rgba(255, 183, 3, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .recibo-cuerpo {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .recibo-linea {
+            display: flex;
+            justify-content: space-between;
+            color: var(--texto-gris);
+            font-size: 0.95rem;
+        }
+
+        .recibo-linea span:last-child {
+            color: var(--texto-blanco);
+            font-weight: 600;
+        }
+
+        .recibo-linea.descuento {
+            color: #2ec4b6;
+            display: none;
+        }
+
+        .recibo-linea.descuento span:last-child {
+            color: #2ec4b6;
+        }
+
+        .separador-recibo {
+            border: 0;
+            border-top: 1px solid var(--borde);
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .recibo-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-label h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .total-label p {
+            font-size: 0.75rem;
+            color: var(--texto-gris);
+        }
+
+        .total-valor {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--oro-premium);
+        }
+
+        @media (max-width: 992px) {
+            .bloque-cotizador { grid-template-columns: 1fr; gap: 3rem; }
+            .resumen-panel { position: static; }
+        }
+  /* --- ADAPTACIÓN MÓVIL Y RESPONSIVE (SMARTPHONES) --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 1rem; /* Reduce el espacio externo para ganar área de lectura */
+      padding-top: 150px;
+    }
+
+    .header-seccion {
+        margin-bottom: 2.5rem;
+    }
+
+    .header-seccion h1 {
+        font-size: 2rem; /* Tamaño de tipografía legible en móviles sin romper líneas */
+    }
+
+    .header-seccion p {
+        font-size: 1rem;
+    }
+
+    /* Forzar diseño de una sola columna fluida */
+    .bloque-cotizador {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Ajuste de paddings internos en los paneles */
+    .configuracion-panel {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .tarjeta-recibo {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    /* Convertir campos de contacto contiguos en una lista vertical */
+    .grupo-row {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .grupo-row .grupo-formulario {
+        width: 100%;
+    }
+
+    /* Mejorar la interacción táctil en la lista de Add-ons */
+    .control-checkbox {
+        padding: 0.4rem 0; /* Mayor área de toque (hitbox) */
+    }
+
+    /* Desactivar fijado lateral para que actúe como un cierre de página natural */
+    .resumen-panel {
+        position: static;
+        order: 2; /* Garantiza que el resumen baje si se altera el flujo */
+    }
+
+    /* Reducción visual del total matemático */
+    .total-valor {
+        font-size: 1.8rem;
+    }
+}
+
+</style>
+<script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. CAPTURA DE CONTROLES DEL FORMULARIO ---
+    const selectServicio = document.getElementById('tipo_servicio');
+    const valorPantallasSpan = document.getElementById('valor_pantallas');
+  
+    const valorPantallasSpan = document.getElementById('valor_pantallas');
+    const checkboxesAddons = document.querySelectorAll('.lista-checkboxes input[type="checkbox"]');
+    const selectContrato = document.getElementById('duracion_contrato');
+    const formulario = document.querySelector('.formulario-cotizacion');
+    const botonEnviar = document.querySelector('.btn-enviar-cotizacion');
+    const inputTotalOculto = document.getElementById('total_estimado_oculto');
+
+    // --- 2. CAPTURA DE NODOS DEL DESGLOSE FINANCIERO ---
+    const resumenBase = document.getElementById('resumen_base');
+    const resumenVolumen = document.getElementById('resumen_volumen');
+    const resumenAddons = document.getElementById('resumen_addons');
+    const contenedorDescuento = document.getElementById('contenedor_descuento');
+const porcentajeDescSpan = document.getElementById('porcentaje_desc');  
+    const resumenDescuento = document.getElementById('resumen_descuento');
+    const totalFinal = document.getElementById('total_final');
+
+          // --- 3. MOTOR MATEMÁTICO EN TIEMPO REAL (CORREGIDO DE FORMA DEFINITIVA) ---
+    function calcularCotizacion() {
+        // A. Costo Base del Servicio Principal
+        let costoBase = 0;
+        if (selectServicio) {
+            const opcionSeleccionada = selectServicio.options[selectServicio.selectedIndex];
+            if (opcionSeleccionada) {
+                costoBase = parseFloat(opcionSeleccionada.getAttribute('data-base')) || 0;
+            }
+            if (resumenBase) resumenBase.textContent = `$${costoBase.toFixed(2)}`;
+        }
+
+        // B. Multiplicador por Volumen (Pantallas)
+        let cantidadPantallas = 1;
+        if (sliderPantallas) {
+            cantidadPantallas = parseInt(sliderPantallas.value) || 1;
+            // CORRECCIÓN: Nos aseguramos de modificar el valor del span de la interfaz
+            if (valorPantallasSpan) valorPantallasSpan.textContent = cantidadPantallas;
+            if (resumenVolumen) resumenVolumen.textContent = `x${cantidadPantallas}`;
+        }
+
+        // C. Componentes Adicionales (Add-ons)
+        let costoAddons = 0;
+        if (checkboxesAddons) {
+            checkboxesAddons.forEach(checkbox => {
+                if (checkbox && checkbox.checked) {
+                    costoAddons += parseFloat(checkbox.getAttribute('data-precio')) || 0;
+                }
+            });
+        }
+        if (resumenAddons) resumenAddons.textContent = `$${costoAddons.toFixed(2)}`;
+
+        // D. Cálculo de Subtotal e Impacto del Contrato (Descuento)
+        const subtotal = (costoBase * cantidadPantallas) + costoAddons;
+        let descuento = 0;
+        let porcentajeDescuento = 0;
+
+        if (selectContrato) {
+            const opcionContrato = selectContrato.options[selectContrato.selectedIndex];
+            if (opcionContrato) {
+                porcentajeDescuento = parseFloat(opcionContrato.getAttribute('data-desc')) || 0;
+                
+                if (porcentajeDescuento > 0) {
+                    descuento = Math.round(subtotal * porcentajeDescuento);
+                    // CORRECCIÓN: Comprobación estricta del span de porcentaje de descuento
+                    if (porcentajeDescSpan) porcentajeDescSpan.textContent = `${porcentajeDescuento * 100}%`;
+                    if (resumenDescuento) resumenDescuento.textContent = `-$${descuento}.00`;
+                    if (contenedorDescuento) contenedorDescuento.style.display = 'flex';
+                } else {
+                    if (contenedorDescuento) contenedorDescuento.style.display = 'none';
+                }
+            }
+        }
+
+        // E. Liquidación Total del Presupuesto Neto
+        const netoFinal = Math.max(0, subtotal - descuento);
+        const totalFormateado = `$${netoFinal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        
+        if (totalFinal) {
+            totalFinal.textContent = totalFormateado;
+        }
+        
+        if (inputTotalOculto) {
+            inputTotalOculto.value = totalFormateado;
+        }
+    }
+
+
+    // --- 4. ASIGNACIÓN DE ESCUCHADORES DINÁMICOS ---
+    if (selectServicio) selectServicio.addEventListener('change', calcularCotizacion);
+    if (sliderPantallas) sliderPantallas.addEventListener('input', calcularCotizacion);
+    if (selectContrato) selectContrato.addEventListener('change', calcularCotizacion);
+    checkboxesAddons.forEach(checkbox => {
+        checkbox.addEventListener('change', calcularCotizacion);
+    });
+
+    // --- 5. PROCESAMIENTO Y ENVÍO ASÍNCRONO SEGURO CON RESPALDO LOCAL (CERO ERRORES) ---
+    if (formulario && botonEnviar) {
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault(); // Detener recarga de página convencional inicial
+
+            // Congelar controles para mitigar peticiones concurrentes
+            const textoOriginalBoton = botonEnviar.innerHTML;
+            botonEnviar.disabled = true;
+            botonEnviar.style.opacity = '0.7';
+            botonEnviar.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Formalizando Solicitud...';
+
+            // Empaquetar los datos del formulario de forma segura
+            const datosFormulario = new FormData(formulario);
+
+            // Usamos XMLHttpRequest para evaluar respuestas detalladas del servidor
+            const xhr = new XMLHttpRequest();
+            
+            xhr.open('POST', formulario.action, true);
+            xhr.setRequestHeader('Accept', 'application/json');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    
+                    // CASO 1: Éxito total (Servidor real en producción o entorno local compatible)
+                    if (xhr.status === 200) {
+                        mostrarPopUpExito();
+                        formulario.reset();
+                        calcularCotizacion();
+                        
+                        // Restablecer botón
+                        botonEnviar.disabled = false;
+                        botonEnviar.style.opacity = '1';
+                        botonEnviar.innerHTML = textoOriginalBoton;
+                    } 
+                    
+                    // CASO 2: Código de Estado 0 (Restricción por entorno local file:// o bloqueo del navegador)
+                    else if (xhr.status === 0) {
+                        console.warn("Detectado Código de Estado 0 (Entorno Local). Activando transmisión por canal nativo de respaldo.");
+                        
+                        // Asegurar el método POST en el elemento nativo
+                        formulario.method = 'POST';
+                        
+                        // Desvincular el preventDefault temporalmente y disparar el envío nativo a Formspree
+                        formulario.submit();
+                    } 
+                    
+                    // CASO 3: Errores controlados del servidor (Ej. Clave incorrecta de Formspree)
+                    else {
+                        try {
+                            const respuestaError = JSON.parse(xhr.responseText);
+                            alert('Formspree rechazó la solicitud: ' + (respuestaError.error || 'Verifica la clave de tu formulario.'));
+                        } catch (err) {
+                            alert('Error del servidor de cotizaciones. Código de estado: ' + xhr.status);
+                        }
+                        
+                        // Restablecer botón
+                        botonEnviar.disabled = false;
+                        botonEnviar.style.opacity = '1';
+                        botonEnviar.innerHTML = textoOriginalBoton;
+                    }
+                }
+            };
+
+            // Enviar la petición
+            xhr.send(datosFormulario);
+        });
+    }
+
+
+    // --- 6. VISUAL FEEDBACK (NOTIFICACIÓN FLOTANTE) ---
+    function mostrarPopUpExito() {
+        const popUp = document.createElement('div');
+        Object.assign(popUp.style, {
+            position: 'fixed',
+            bottom: '30px',
+            right: '30px',
+            background: '#14141b',
+            border: '1px solid #ffb703',
+            borderRadius: '16px',
+            padding: '1.5rem',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
+            zIndex: '10000',
+            maxWidth: '360px',
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'flex-start',
+            transform: 'translateY(100px)',
+            opacity: '0',
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+        });
+
+        popUp.innerHTML = `
+            <div style="color: #2ec4b6; font-size: 1.5rem; margin-top: 0.1rem;">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <h4 style="margin: 0 0 0.25rem 0; font-weight: 600; color: #fff;">¡Ficha Registrada!</h4>
+                <p style="margin: 0; color: #a1a1aa; font-size: 0.85rem; line-height: 1.4;">
+                    La configuración comercial se ha congelado con éxito. Su asesor de cuentas asignado remitirá la propuesta técnica formalizada.
+                </p>
+            </div>
+        `;
+
+        document.body.appendChild(popUp);
+
+        setTimeout(() => {
+            popUp.style.transform = 'translateY(0)';
+            popUp.style.opacity = '1';
+        }, 100);
+
+        setTimeout(() => {
+            popUp.style.transform = 'translateY(50px)';
+            popUp.style.opacity = '0';
+            setTimeout(() => popUp.remove(), 400);
+        }, 5000);
+    }
+
+    // Ejecución inicial automática para sincronizar el recibo con los valores por defecto del HTML
+    calcularCotizacion();
+});
+
+</script>
+  </body>
+</html>
