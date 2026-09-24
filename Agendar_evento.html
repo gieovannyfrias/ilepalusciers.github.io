@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Agendar evento </title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+     <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+<!-- Título que verá Google -->
+<meta name="title" content="Agendar evento">
+<meta name="description" content="Coordina estrenos globales de prensa, conferencias simultáneas satelitales y proyecciones corporativas protegidas por encriptación DRM.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Agendar evento">
+  <meta property="og:description" content="Coordina estrenos globales de prensa, conferencias simultáneas satelitales y proyecciones corporativas protegidas por encriptación DRM.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Agendar_evento">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agendar evento">
+  <meta name="twitter:description" content="Coordina estrenos globales de prensa, conferencias simultáneas satelitales y proyecciones corporativas protegidas por encriptación DRM.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+  
+<body>
+
+    <div class="container">
+        
+        <header class="header-seccion">
+            <h1>Transmisiones & Eventos VIP</h1>
+            <p>Coordina estrenos globales de prensa, conferencias simultáneas satelitales y proyecciones corporativas protegidas por encriptación DRM.</p>
+            <div class="indicador-evento">
+                <span><i class="fa-solid fa-calendar-check"></i> Reserva de Infraestructura Satelital</span>
+            </div>
+        </header>
+
+        <div class="bloque-evento">
+            
+            <!-- Columna Izquierda: Formulario -->
+          <section class="panel-formulario-evento">
+    <h2>Programación de Evento Corporativo</h2>
+    <!-- Removido el bloqueo nativo para permitir la transmisión por fetch -->
+    <form class="formulario-evento" id="form_evento" action="https://formspree.io/f/mnpnvrje" method="POST">
+        
+        <div class="grupo-row">
+            <div class="grupo-formulario">
+                <label for="empresa_evento">Organización / Empresa</label>
+                <input type="text" id="empresa_evento" name="empresa" placeholder="Ej. Cinema Network" required>
+            </div>
+            <div class="grupo-formulario">
+                <label for="tipo_evento">Tipo de Función</label>
+                <select id="tipo_evento" name="tipo_evento">
+                    <option value="premiere">Premiere / Estreno de Prensa</option>
+                    <option value="satelital">Transmisión Satelital Simultánea</option>
+                    <option value="corporativo">Función Corporativa Privada</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grupo-row">
+            <div class="grupo-formulario">
+                <label for="fecha_evento">Fecha Tentativa</label>
+                <input type="date" id="fecha_evento" name="fecha_evento" required>
+            </div>
+            <div class="grupo-formulario">
+                <label for="hora_evento">Hora de Inicio (UTC)</label>
+                <input type="time" id="hora_evento" name="hora_evento" required>
+            </div>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="nodos_evento">Estimado de Espectadores / Nodos Conectados</label>
+            <select id="nodos_evento" name="volumen_espectadores">
+                <option value="500_max">Hasta 500 espectadores concurrentes</option>
+                <option value="2500_max">500 a 2,500 espectadores concurrentes</option>
+                <option value="enterprise">Más de 2,500 (Infraestructura Dedicada)</option>
+            </select>
+        </div>
+
+        <div class="grupo-formulario">
+            <label for="detalles_evento">Especificaciones Técnicas Especiales</label>
+            <textarea id="detalles_evento" name="especificaciones" rows="4" placeholder="Indica si requieres retransmisión por tokens individuales, integración de subtítulos multi-idioma en vivo o soporte físico en locación..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-agendar-evento">Reservar Slot de Transmisión</button>
+    </form>
+</section>
+
+
+            <!-- Columna Derecha: Beneficios Informativos -->
+            <aside class="panel-beneficios-evento">
+                <div class="tarjeta-beneficio-mini">
+                    <div class="beneficio-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                    <div class="beneficio-txt">
+                        <h3>Protección contra Copias DRM</h3>
+                        <p>Bloqueo dinámico de software de captura de pantalla y marcas de agua invisibles con criptografía para evitar filtraciones de pases de prensa.</p>
+                    </div>
+                </div>
+
+                <div class="tarjeta-beneficio-mini">
+                    <div class="beneficio-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                    <div class="beneficio-txt">
+                        <h3>Redundancia Satelital Dual</h3>
+                        <p>Infraestructura CDN con respaldo satelital en tiempo real para asegurar cero caídas durante eventos masivos AAA.</p>
+                    </div>
+                </div>
+
+                <div class="tarjeta-beneficio-mini">
+                    <div class="beneficio-icon"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="beneficio-txt">
+                        <h3>Ticketing Virtual Inteligente</h3>
+                        <p>Generación automatizada de tokens de acceso único vinculados por hardware a los dispositivos de tus invitados VIP.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <style>
+        :root {
+            --bg-principal: #09090b;
+            --bg-tarjeta: #14141b;
+            --bg-tarjeta-hover: #1c1c24;
+            --rojo-premium: #e50914;
+            --oro-premium: #ffb703;
+            --texto-blanco: #ffffff;
+            --texto-gris: #a1a1aa;
+            --borde: rgba(255, 255, 255, 0.08);
+            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+          zoom:75%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Encabezado */
+        .header-seccion {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header-seccion h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--texto-gris) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-seccion p {
+            color: var(--texto-gris);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .indicador-evento {
+            display: inline-flex;
+            background: rgba(255, 183, 3, 0.1);
+            border: 1px solid rgba(255, 183, 3, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--oro-premium);
+            letter-spacing: 0.5px;
+        }
+
+        .indicador-evento i {
+            margin-right: 0.5rem;
+        }
+
+        /* Estructura de Dos Columnas */
+        .bloque-evento {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Formulario de Reserva */
+        .panel-formulario-evento {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
+        .panel-formulario-evento h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .formulario-evento {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .grupo-formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .grupo-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .formulario-evento label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--texto-gris);
+        }
+
+        .formulario-evento input[type="text"],
+        .formulario-evento input[type="email"],
+        .formulario-evento input[type="date"],
+        .formulario-evento input[type="time"],
+        .formulario-evento select,
+        .formulario-evento textarea {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--texto-blanco);
+            font-size: 1rem;
+            transition: var(--transicion);
+            width: 100%;
+        }
+
+        .formulario-evento input:focus,
+        .formulario-evento select:focus,
+        .formulario-evento textarea:focus {
+            outline: none;
+            border-color: var(--oro-premium);
+            box-shadow: 0 0 10px rgba(255, 183, 3, 0.2);
+        }
+
+        .formulario-evento select option {
+            background: var(--bg-tarjeta);
+            color: var(--texto-blanco);
+        }
+
+        .btn-agendar-evento {
+            background: var(--oro-premium);
+            border: none;
+            color: #000;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicion);
+            box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+            margin-top: 1rem;
+        }
+
+        .btn-agendar-evento:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 183, 3, 0.5);
+            background: #ffe300;
+        }
+
+        /* Columna Informativa de Beneficios */
+        .panel-beneficios-evento {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .tarjeta-beneficio-mini {
+            background: linear-gradient(145deg, #14141b 0%, #0d0d12 100%);
+            border: 1px solid var(--borde);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: var(--transicion);
+        }
+
+        .tarjeta-beneficio-mini:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .beneficio-icon {
+            font-size: 2rem;
+            color: var(--rojo-premium);
+        }
+
+        .beneficio-txt h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .beneficio-txt p {
+            color: var(--texto-gris);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Responsivo */
+        @media (max-width: 992px) {
+            .bloque-evento {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-seccion h1 { font-size: 2.2rem; }
+            .container { padding: 2rem 1rem;padding-top: 100px; }
+            .panel-formulario-evento { padding: 2rem 1.5rem; }
+            .grupo-row { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+    </style>
+<script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const formulario = document.getElementById('form_evento');
+    const botonAgendar = document.querySelector('.btn-agendar-evento');
+
+    if (formulario) {
+        formulario.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Detener recarga de página convencional
+
+            const empresa = document.getElementById('empresa_evento').value.trim();
+
+            // Bloqueo de seguridad y animación de carga
+            const textoOriginal = botonAgendar.innerHTML;
+            botonAgendar.disabled = true;
+            botonAgendar.style.opacity = '0.7';
+            botonAgendar.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Asignando Slot Satelital...';
+
+            // Mapeo real de los datos del formulario
+            const datosFormulario = new FormData(formulario);
+
+            try {
+                // Envío asíncrono real directo al endpoint de Formspree
+                const respuesta = await fetch(formulario.action, {
+                    method: formulario.method,
+                    body: datosFormulario,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (respuesta.ok) {
+                    // Desplegar feedback pop-up de éxito
+                    mostrarNotificacionB2B(empresa);
+                    // Resetear el formulario tras completarse
+                    formulario.reset();
+                } else {
+                    alert('Error en el servidor de streaming. No se pudo reservar el slot en este momento.');
+                }
+            } catch (error) {
+                alert('Fallo de red. Asegúrate de tener conexión a internet estable e inténtalo de nuevo.');
+            } finally {
+                // Devolver el botón corporativo a su estado activo normal
+                botonAgendar.disabled = false;
+                botonAgendar.style.opacity = '1';
+                botonAgendar.innerHTML = textoOriginal;
+            }
+        });
+    }
+
+    function mostrarNotificacionB2B(nombreEmpresa) {
+        const popUp = document.createElement('div');
+        
+        Object.assign(popUp.style, {
+            position: 'fixed',
+            bottom: '30px',
+            right: '30px',
+            background: '#14141b',
+            border: '1px solid var(--oro-premium, #ffb703)',
+            borderRadius: '16px',
+            padding: '1.5rem',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
+            zIndex: '10000',
+            maxWidth: '360px',
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'flex-start',
+            transform: 'translateY(100px)',
+            opacity: '0',
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+        });
+
+        popUp.innerHTML = `
+            <div style="color: var(--oro-premium, #ffb703); font-size: 1.5rem; margin-top: 0.1rem;">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <h4 style="margin: 0 0 0.25rem 0; font-weight: 600; color: #fff;">¡Reserva Solicitada!</h4>
+                <p style="margin: 0; color: #a1a1aa; font-size: 0.85rem; line-height: 1.4;">
+                    Hemos pre-asignado el espacio para <strong>${nombreEmpresa}</strong>. Un ingeniero de transmisiones validará la cobertura regional de ancho de banda.
+                </p>
+            </div>
+        `;
+
+        document.body.appendChild(popUp);
+        
+        setTimeout(() => {
+            popUp.style.transform = 'translateY(0)';
+            popUp.style.opacity = '1';
+        }, 100);
+
+        setTimeout(() => {
+            popUp.style.transform = 'translateY(50px)';
+            popUp.style.opacity = '0';
+            setTimeout(() => popUp.remove(), 400);
+        }, 5000);
+    }
+});
+
+    </script>
+</body>
+</html>
