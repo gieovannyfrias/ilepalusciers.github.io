@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+   <link rel="icon" href="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp" type="image/x-icon">
+<!--  google-->
+    <title>Acceder sandbox </title>
+  <!--  canonical web-->
+  <link rel="canonical" href="https://ilepalusciers.gieovannyfrias.com"/>
+
+    <!-- Google Fonts: Outfit & Fira Code (para código) -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+  
+<!-- Título que verá Google -->
+<meta name="title" content="Acceder sandbox">
+<meta name="description" content="Prueba e integra de forma interactiva los microservicios de streaming, distribución DRM y metadatos CDN de nuestra plataforma de medios.">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="peliculas, series, entretenimiento, plataformas digitales"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Acceder sandbox">
+  <meta property="og:description" content="Prueba e integra de forma interactiva los microservicios de streaming, distribución DRM y metadatos CDN de nuestra plataforma de medios.">
+  <meta property="og:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  <meta property="og:url" content="https://ilepalusciers.gieovannyfrias.com/Acceder_sandbox">
+  <meta property="og:type" content="WebSite">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Acceder sandbox">
+  <meta name="twitter:description" content="Prueba e integra de forma interactiva los microservicios de streaming, distribución DRM y metadatos CDN de nuestra plataforma de medios.">
+<meta name="twitter:image" content="https://ilepalusciers.gieovannyfrias.com/Imagenes/Logo.webp">
+  </head>
+  <body>
+
+    <div class="container">
+        
+        <header class="header-seccion">
+            <h1>Enterprise Sandbox</h1>
+            <p>Prueba e integra de forma interactiva los microservicios de streaming, distribución DRM y metadatos CDN de nuestra plataforma de medios.</p>
+            <div class="badge-sandbox">
+                <span><i class="fa-solid fa-terminal"></i> Entorno v1.0 Habilitado</span>
+            </div>
+        </header>
+
+        <div class="bloque-sandbox">
+            
+            <!-- Controles a la Izquierda -->
+            <section class="panel-control">
+                <h2>Parámetros de Request</h2>
+                
+                <div class="mini-card-token">
+                    <div class="token-header">
+                        <span>X-ILEPALUSCIERS-AUTH-TOKEN</span>
+                        <span><i class="fa-solid fa-lock"></i> SECURE</span>
+                    </div>
+                    <div class="token-value">ilepalusciers_token_77x9924abcde3910ff92</div>
+                </div>
+
+                <form class="formulario-sandbox" onsubmit="return false;">
+                    <div class="grupo-campo">
+                        <label for="endpoint_select">Endpoint / Recurso</label>
+                        <select id="endpoint_select">
+                            <option value="movies">GET /v1/movies/catalog</option>
+                            <option value="streaming">GET /v1/streaming/status</option>
+                            <option value="licencias">POST /v1/licenses/verify</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="limit_input">Límite de Resultados (Query Param)</label>
+                        <input type="number" id="limit_input" min="1" max="100" value="5">
+                    </div>
+
+                    <button type="button" class="btn-ejecutar-api" id="btn_fire_api">
+                        <i class="fa-solid fa-play"></i> Ejecutar
+                    </button>
+                </form>
+            </section>
+
+            <!-- Monitor / Pantalla de Código JSON (Derecha) -->
+            <aside class="monitor-consola">
+                <div class="barra-consola-top">
+                    <div class="luces-consola">
+                        <div class="luz r"></div>
+                        <div class="luz a"></div>
+                        <div class="luz v"></div>
+                    </div>
+                    <span class="indicador-metodo" id="metodo_label">GET</span>
+                </div>
+                <div class="pantalla-codigo">
+                    <pre id="json_output">// Presiona el botón para consultar los microservicios...</pre>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Sección Inferior de Métricas -->
+        <footer class="metricas-sandbox">
+            <div class="metrica-card">
+                <i class="fa-solid fa-bolt"></i>
+                <div class="metrica-txt">
+                    <h4>Latencia Promedio</h4>
+                    <p id="latencia_valor">0 ms</p>
+                </div>
+            </div>
+            <div class="metrica-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <div class="metrica-txt">
+                    <h4>Llamadas Disponibles</h4>
+                    <p id="cuota_valor">99</p>
+                </div>
+            </div>
+            <div class="metrica-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="metrica-txt">
+                    <h4>SSL Status</h4>
+                    <p style="color: var(--verde-dev);">Active TLS 1.3</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        :root {
+            --bg-principal: #09090b;
+            --bg-tarjeta: #14141b;
+            --bg-consola: #0b0b0f;
+            --rojo-premium: #e50914;
+            --oro-premium: #ffb703;
+            --verde-dev: #2ec4b6;
+            --texto-blanco: #ffffff;
+            --texto-gris: #a1a1aa;
+            --borde: rgba(255, 255, 255, 0.08);
+            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+          zoom:75%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Encabezado */
+        .header-seccion {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header-seccion h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--texto-gris) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-seccion p {
+            color: var(--texto-gris);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .badge-sandbox {
+            display: inline-flex;
+            background: rgba(46, 196, 182, 0.1);
+            color: var(--verde-dev);
+            border: 1px solid rgba(46, 196, 182, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-sandbox i {
+            margin-right: 0.5rem;
+        }
+
+        /* Bloques de la Consola */
+        .bloque-sandbox {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Panel de Control de Parámetros */
+        .panel-control {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .panel-control h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .grupo-campo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grupo-campo label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--texto-gris);
+        }
+
+        .panel-control select,
+        .panel-control input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--texto-blanco);
+            font-size: 1rem;
+            transition: var(--transicion);
+            width: 100%;
+        }
+
+        .panel-control select:focus,
+        .panel-control input:focus {
+            outline: none;
+            border-color: var(--verde-dev);
+            box-shadow: 0 0 10px rgba(46, 196, 182, 0.2);
+        }
+
+        /* Credenciales estáticas visuales */
+        .mini-card-token {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--borde);
+            border-radius: 14px;
+            padding: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--texto-gris);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .token-value {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--oro-premium);
+            word-break: break-all;
+        }
+
+        .btn-ejecutar-api {
+            width: 100%;
+            background: var(--verde-dev);
+            border: none;
+            color: #000;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicion);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(46, 196, 182, 0.3);
+        }
+
+        .btn-ejecutar-api:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 196, 182, 0.5);
+            background: #3ce5d4;
+        }
+
+        /* Monitor / Pantalla de Código JSON */
+        .monitor-consola {
+            background: var(--bg-consola);
+            border: 1px solid var(--borde);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .barra-consola-top {
+            background: #181822;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .luces-consola {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .luz {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .luz.r { background: #ff5f56; }
+        .luz.a { background: #ffbd2e; }
+        .luz.v { background: #27c93f; }
+
+        .indicador-metodo {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(46, 196, 182, 0.15);
+            color: var(--verde-dev);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* Cuerpo del Código */
+        .pantalla-codigo {
+            padding: 2rem;
+            overflow-x: auto;
+            max-height: 480px;
+            min-height: 400px;
+        }
+
+        pre {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #5af78e;
+            white-space: pre-wrap;
+        }
+
+        /* Sección Inferior de Métricas */
+        .metricas-sandbox {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .metrica-card {
+            background: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .metrica-card i {
+            font-size: 2rem;
+            color: var(--oro-premium);
+        }
+
+        .metrica-txt h4 {
+            font-size: 0.85rem;
+            color: var(--texto-gris);
+            text-transform: uppercase;
+        }
+
+        .metrica-txt p {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        @media (max-width: 992px) {
+            .bloque-sandbox { grid-template-columns: 1fr; gap: 3rem; }
+            .metricas-sandbox { grid-template-columns: 1fr; }
+        }
+    </style>
+<script src="src/components/Header-Footer/Header-Footer-main.js" defer></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. CAPTURA DE CONTROLES E INTERFAZ ---
+    const selectEndpoint = document.getElementById('endpoint_select');
+    const inputLimit = document.getElementById('limit_input');
+    const labelMetodo = document.getElementById('metodo_label');
+    const btnFire = document.getElementById('btn_fire_api');
+    const jsonOutput = document.getElementById('json_output');
+    const latenciaValor = document.getElementById('latencia_valor');
+    const cuotaValor = document.getElementById('cuota_valor');
+
+    let creditosRestantes = 99;
+
+    // --- 2. MATRIZ DE RESPUESTAS SIMULADAS (MOCK DATA) ---
+    const DATA_MOCK = {
+        movies: {
+            status: "success",
+            results: 2,
+            data: [
+                { id: "mov_01", title: "No_disponible", type: "Film", genre: "Sci-Fi", stream_url_4k: "https://ilepalusciers.gieovannyfrias.com/Temporada" },
+                { id: "mov_02", title: "No_disponible", type: "Series", seasons: 3, drm_protected: true },
+                { id: "mov_03", title: "No_disponible", type: "Film", genre: "Action", stream_url_4k: "https://ilepalusciers.gieovannyfrias.com/Temporada_1" },
+                { id: "mov_04", title: "No_disponible", type: "Documentary", genre: "Tech", stream_url_4k: "https://ilepalusciers.gieovannyfrias.com/Temporada_2" },
+                { id: "mov_05", title: "No_disponible", type: "Series", seasons: 1, drm_protected: false }
+            ]
+        },
+        streaming: {
+            gateway_status: "online",
+            active_nodes: 14,
+            regions: ["es-MX-east", "es-MX-central", "es-MX-east"],
+            global_uptime: "99.982%"
+        },
+        licencias: {
+            license_status: "verified",
+            issued_to: "Ilepalusc Iers",
+            token_expiration: "2027-12-31T23:59:59Z",
+            max_allowed_nodes: 50
+        }
+    };
+
+    // --- 3. SINK DE INTERFAZ (Sincroniza método HTTP y estilos) ---
+    function actualizarMetodoUI() {
+        if (!selectEndpoint || !labelMetodo) return;
+
+        if (selectEndpoint.value === 'licencias') {
+            labelMetodo.textContent = 'POST';
+            labelMetodo.style.color = '#ffb703'; // Oro premium acorde al CSS
+            labelMetodo.style.background = 'rgba(255, 183, 3, 0.15)';
+        } else {
+            labelMetodo.textContent = 'GET';
+            labelMetodo.style.color = ''; // Hereda var(--verde-dev) del CSS
+            labelMetodo.style.background = ''; // Hereda estilos por defecto del CSS
+        }
+    }
+
+    // --- 4. CONTROLADOR DE DISPARO (API REQUEST SIMULATOR) ---
+    async function ejecutarRequest() {
+        if (!btnFire || !jsonOutput || !selectEndpoint) return;
+
+        // Validar si quedan créditos antes de operar
+        if (creditosRestantes <= 0) {
+            jsonOutput.textContent = "// Error 429: Too Many Requests.\n// Créditos agotados para este nodo de pruebas.";
+            jsonOutput.style.color = '#ff141e';
+            return;
+        }
+
+        // Estado de Carga (Loading UI)
+        jsonOutput.style.color = ''; // Reset de color
+        jsonOutput.textContent = "// Conectando con el servidor de la Agencia e inicializando handshake...";
+        btnFire.disabled = true;
+        btnFire.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Fetching API...';
+
+        // Simulación de latencia de red controlada (800ms)
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        // Extracción de datos correspondientes al Endpoint
+        const endpointActual = selectEndpoint.value;
+        const respuestaBase = DATA_MOCK[endpointActual];
+
+        if (respuestaBase) {
+            // Clonar el objeto de manera profunda para no alterar la matriz original DATA_MOCK
+            let respuestaProcesada = JSON.parse(JSON.stringify(respuestaBase));
+
+            // Lógica de Query Param: Recorte dinámico si el endpoint contiene un arreglo "data"
+            if (endpointActual === 'movies' && inputLimit) {
+                const limite = parseInt(inputLimit.value) || 5;
+                if (respuestaProcesada.data && Array.isArray(respuestaProcesada.data)) {
+                    respuestaProcesada.data = respuestaProcesada.data.slice(0, limite);
+                    respuestaProcesada.results = respuestaProcesada.data.length; // Actualiza el contador meta
+                }
+            }
+
+            // Inyección formateada en la consola
+            jsonOutput.textContent = JSON.stringify(respuestaProcesada, null, 4);
+        } else {
+            jsonOutput.textContent = "// Error 404: Endpoint no encontrado.";
+            jsonOutput.style.color = '#ff141e';
+        }
+
+        // Cálculo aleatorio de latencia realista en milisegundos
+        const randomLatencia = Math.floor(Math.random() * (45 - 12 + 1)) + 12;
+        if (latenciaValor) latenciaValor.textContent = `${randomLatencia} ms`;
+
+        // Deducción de cuota de créditos corporativos
+        creditosRestantes--;
+        if (cuotaValor) cuotaValor.textContent = creditosRestantes;
+
+        // Restablecer botón de disparo
+        btnFire.disabled = false;
+        btnFire.innerHTML = '<i class="fa-solid fa-play"></i> Ejecutar Request (Test API)';
+    }
+
+    // --- 5. ASIGNACIÓN DE ESCUCHADORES DINÁMICOS ---
+    if (selectEndpoint) selectEndpoint.addEventListener('change', actualizarMetodoUI);
+    if (btnFire) btnFire.addEventListener('click', ejecutarRequest);
+
+    // --- 6. CALIBRACIÓN E INICIALIZACIÓN DE CARGA ---
+    actualizarMetodoUI(); // Evita desincronización de métodos en el primer render
+});
+
+    </script>
+</body>
+</html>
