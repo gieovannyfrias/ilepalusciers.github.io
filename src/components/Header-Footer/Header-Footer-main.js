@@ -1,17 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Inyectar los estilos CSS globales del Header y Footer
     inyectarEstilosCSS();
-
     // 2. Inyectar las estructuras HTML
-    inyectarHeaderFooter();
-    
+    inyectarHeaderFooter(); 
     // 3. Inicializar la interfaz y componentes lógicos
     marcarEnlaceActivo();
     setupMobileMenu();
     setupRealTimeSearch();
   yearElements();
 });
-
 function inyectarEstilosCSS() {
     const css = `
         /* --- ESTILOS DEL NAVBAR --- */
@@ -191,7 +188,6 @@ function inyectarEstilosCSS() {
             #search-input { font-size: 12px; }
         }
     `;
-
     // Crear la etiqueta <style> e inyectarla en el <head>
     const styleTag = document.createElement("style");
     styleTag.textContent = css;
@@ -200,7 +196,6 @@ function inyectarEstilosCSS() {
 function inyectarHeaderFooter() {
     const bodyContainer = document.querySelector("body");
     if (!bodyContainer) return;
-
     const headerHTML = `
          <header class="navbar">
             <div class="logo">ILEPALUSC <span>IERS</span></div>
@@ -248,11 +243,11 @@ function inyectarHeaderFooter() {
                     <a href="/Acerca_de_nosotros">Acerca de nosotros</a>
                     <a href="/Avisos_legales">Avisos legales</a>
                     <a href="/Plataformas">Plataformas</a>
-
                 </div>
                 <div class="footer-column">
                     <a href="/Empleo">Empleo</a>
                     <a href="/Politicas_cookies">Preferencias de cookies</a>
+                    <a href="/Servicios_B2B">Servicios</a>
                 </div>
                 <div class="footer-column">
                     <a href="/Terminos_uso">Términos de uso</a>
@@ -289,7 +284,6 @@ function marcarEnlaceActivo() {
         document.getElementById("nav-inicio")?.classList.add("active");
     }
 }
-
 /**
  * Configura el comportamiento del menú hamburguesa en dispositivos móviles
  */
